@@ -57,8 +57,8 @@ diffs:
 | (end) Blind review | — | `05-review.md`, deleted after triage |
 
 `plan-slices` is two skills in one file: **Part A** cuts the slices (phase
-4), **Part B** is the per-slice implementation loop. `/jig-slices` invokes Part A
-only; `/jig-slice-next` and `/jig-slice-approve` drive Part B.
+4), **Part B** is the per-slice implementation loop. `/jig:slices` invokes Part A
+only; `/jig:slice-next` and `/jig:slice-approve` drive Part B.
 
 **Depth triage** happens in `plan-product` step 1 and changes which phases
 run: `oneshot` skips the loop entirely, `medium` merges phase 2 into
@@ -97,7 +97,7 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   They are mode-independent, as are the caps on them (~5 impl, ≤7 reviewer).
 - Mode handling spans `hunk-loop.md` (§ Modes), `plan-slices/SKILL.md`
   (§0 and §6), `agents/slice-reviewer.md` (Gather, Write findings, Return),
-  `commands/jig-slice-next.md`, and `commands/jig-slice-approve.md`. A bare `hunk …`
+  `commands/slice-next.md`, and `commands/slice-approve.md`. A bare `hunk …`
   command added to any of them is a regression.
 - Artifact filenames `01`–`05` appear in nearly every file, including the
   blind-reviewer's must-not-read list.
@@ -114,7 +114,7 @@ Likewise: one slice per turn, self-healing capped at three attempts per failing
 check, never fix a check by weakening a test or loosening types.
 
 **Blind-reviewer isolation** is enforced only by prose, in three places
-(`agents/blind-reviewer.md`, `commands/jig-blind-review.md`, README). If you touch
+(`agents/blind-reviewer.md`, `commands/blind-review.md`, README). If you touch
 what it may read, touch all three.
 
 ## Voice

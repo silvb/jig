@@ -42,17 +42,17 @@ diff viewer. The loop offers the install once and never nags.
 ## The loop
 
 ```
-/jig-product <description>      triage → 01-product.md            → gate
-/jig-architecture <dir>         research → 02-architecture.md     → gate
-/jig-program <dir>              → 03-program-design.md            → gate
-/jig-slices <dir>               → 04-slices.md → commit the plan  → gate
+/jig:product <description>      triage → 01-product.md            → gate
+/jig:architecture <dir>         research → 02-architecture.md     → gate
+/jig:program <dir>              → 03-program-design.md            → gate
+/jig:slices <dir>               → 04-slices.md → commit the plan  → gate
 
   per slice, one per turn:
-    /jig-slice-next <dir>       implement → self-check → annotate
+    /jig:slice-next <dir>       implement → self-check → annotate
                                 → slice-reviewer → you, in Hunk
-    /jig-slice-approve <dir>    → record decisions → one commit → reset
+    /jig:slice-approve <dir>    → record decisions → one commit → reset
 
-/jig-blind-review <dir>         once, after the last slice
+/jig:blind-review <dir>         once, after the last slice
 ```
 
 Not everything needs this. `plan-product` triages first: oneshot work is
@@ -100,7 +100,7 @@ tests, or when you ask for it by name.
 and reports. Never by disabling tests or loosening types.
 
 **Artifacts are the loop's state.** Hand a fresh agent nothing but a feature
-directory path and `/jig-slice-next` and it resumes correctly.
+directory path and `/jig:slice-next` and it resumes correctly.
 
 **Ephemeral by default.** Review annotations live in the Hunk session and are
 cleared on approval. The blind review report is deleted after triage. What gets
@@ -129,6 +129,6 @@ references/
 agents/
   codebase-researcher.md  slice-reviewer.md  blind-reviewer.md
 commands/
-  jig-product  jig-architecture  jig-program  jig-slices
-  jig-slice-next  jig-slice-approve  jig-blind-review
+  product  architecture  program  slices
+  slice-next  slice-approve  blind-review
 ```
