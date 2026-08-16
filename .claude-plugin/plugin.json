@@ -1,0 +1,12 @@
+{
+  "name": "jig",
+  "version": "0.1.0",
+  "description": "Front-loaded planning and vertical-slice implementation with human gates at every phase. Four planning skills produce committed, diffable artifacts; slices are implemented one at a time and reviewed in Hunk before each commit.",
+  "keywords": [
+    "planning",
+    "code-review",
+    "vertical-slices",
+    "hunk",
+    "context-engineering"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "jig",
+  "owner": {
+    "name": "silvb",
+    "url": "https://github.com/silvb"
+  },
+  "plugins": [
+    {
+      "name": "jig",
+      "source": "./",
+      "description": "You set the shape. The agent makes the cuts. You check every one."
+    }
+  ]
+}
