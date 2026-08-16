@@ -29,28 +29,35 @@ finished code.
 /plugin install jig
 ```
 
-Requires `git`. The slice loop additionally uses `hunk`
-(`npm i -g hunkdiff`), running in a second terminal.
+Requires `git`. Strongly recommended: [Hunk](https://github.com/modem-dev/hunk)
+(`npm i -g hunkdiff`), kept open in a second terminal with `hunk diff --watch`.
+
+Hunk is where the loop is meant to be reviewed — implementer and reviewer notes
+land inline on the lines they concern, and where the two agents disagree their
+notes sit next to each other. Without it the slice loop still runs: annotations
+fall back to a temporary notes file beside the slice plan, deleted on approval
+like every other ephemeral artifact. The planning phases need nothing but a
+diff viewer. The loop offers the install once and never nags.
 
 ## The loop
 
 ```
-/product <description>        triage → 01-product.md              → gate
-/architecture <dir>           research → 02-architecture.md       → gate
-/program <dir>                → 03-program-design.md              → gate
-/slices <dir>                 → 04-slices.md → commit the plan    → gate
+/jig-product <description>      triage → 01-product.md            → gate
+/jig-architecture <dir>         research → 02-architecture.md     → gate
+/jig-program <dir>              → 03-program-design.md            → gate
+/jig-slices <dir>               → 04-slices.md → commit the plan  → gate
 
   per slice, one per turn:
-    /slice-next <dir>         implement → self-check → annotate
-                              → slice-reviewer → you, in Hunk
-    /slice-approve <dir>      → record decisions → one commit → reset
+    /jig-slice-next <dir>       implement → self-check → annotate
+                                → slice-reviewer → you, in Hunk
+    /jig-slice-approve <dir>    → record decisions → one commit → reset
 
-/blind-review <dir>           once, after the last slice
+/jig-blind-review <dir>         once, after the last slice
 ```
 
-Not everything needs this. `plan-product` triages first: oneshot work is just
-done, medium work merges phases 1 and 2 and skips program design, full depth
-runs everything.
+Not everything needs this. `plan-product` triages first: oneshot work is
+just done, medium work merges phases 1 and 2 and skips program design, full
+depth runs everything.
 
 ## What each phase is for
 
@@ -93,7 +100,7 @@ tests, or when you ask for it by name.
 and reports. Never by disabling tests or loosening types.
 
 **Artifacts are the loop's state.** Hand a fresh agent nothing but a feature
-directory path and `/slice-next` and it resumes correctly.
+directory path and `/jig-slice-next` and it resumes correctly.
 
 **Ephemeral by default.** Review annotations live in the Hunk session and are
 cleared on approval. The blind review report is deleted after triage. What gets
@@ -122,5 +129,6 @@ references/
 agents/
   codebase-researcher.md  slice-reviewer.md  blind-reviewer.md
 commands/
-  product  architecture  program  slices  slice-next  slice-approve  blind-review
+  jig-product  jig-architecture  jig-program  jig-slices
+  jig-slice-next  jig-slice-approve  jig-blind-review
 ```

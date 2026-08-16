@@ -1,5 +1,6 @@
 {
   "name": "jig",
+  "description": "Home of the jig plugin — front-loaded planning and vertical-slice implementation for Claude Code, with a human gate at every phase.",
   "owner": {
     "name": "silvb",
     "url": "https://github.com/silvb"

@@ -110,11 +110,41 @@ plan(<feature-slug>): product, architecture, program design, slices
 
 This gives the human a reviewable planning changeset separate from any code.
 
+### Check the review surface
+
+Before the first slice, probe for Hunk (`command -v hunk`). If it is missing,
+offer the install once, here, where there is still time to set it up before
+there is a diff to read:
+
+```bash
+npm i -g hunkdiff
+```
+
+The loop runs without it — see the file mode in `references/hunk-loop.md` — but
+noticeably worse, because implementer and reviewer notes stop landing inline on
+the lines they are about. Make the offer, take the answer, and move on. Do not
+re-offer at every slice.
+
 ## Part B — The slice loop
 
 **Implement exactly one slice per turn.** Then stop and wait. An agent that
 implements three slices because they were small has handed back an unreviewable
 changeset and defeated the point.
+
+### 0. Pick the annotation mode
+
+Probe before implementing, so steps 3 through 6 know where notes go:
+
+```bash
+command -v hunk >/dev/null 2>&1 && hunk session list
+```
+
+Live session, sidecar, or file — `references/hunk-loop.md` § Modes defines all
+three and how to write into each. **Always use the highest available mode**, and
+re-probe every slice rather than reusing last slice's answer; the human may have
+installed Hunk in between. If Hunk is present, load its own review skill now
+(`hunk skill path`) — it is authoritative over the command subset in the
+reference.
 
 ### 1. Implement
 
@@ -140,25 +170,32 @@ note, not a quiet edit.
 
 ### 3. Self-annotate
 
-Batch annotations into the live Hunk session. See `references/hunk-loop.md` for
-the commands. Three permitted kinds:
+Batch annotations into whichever channel step 0 selected — the live session, the
+sidecar file, or `slices/NN-<slug>.notes.md`. See `references/hunk-loop.md` for
+the commands and the notes-file format. Three permitted kinds:
 
 - `IMPL/choice:` — a real alternative existed and you picked one.
 - `IMPL/assumed:` — the plan was silent or wrong and you filled the gap.
 - `IMPL/deviation:` — you departed from `03-program-design.md`.
 
-Cap around five. Forbidden: notes describing what the code does. The human can
-read the code; what they cannot read is what you were unsure about.
+Cap around five, in every mode — the cap is on the human's attention, not on the
+channel. Forbidden: notes describing what the code does. The human can read the
+code; what they cannot read is what you were unsure about.
 
 ### 4. Independent review
 
-Dispatch the `slice-reviewer` subagent. It hunts for gaps you did not notice —
-it reads the plans, the diff, and your annotations, and takes a position on
-each rather than duplicating it. Wait for it to finish before presenting.
+Dispatch the `slice-reviewer` subagent, telling it the active mode and, in file
+mode, the notes file path. It hunts for gaps you did not notice — it reads the
+plans, the diff, and your annotations, and takes a position on each rather than
+duplicating it. Wait for it to finish before presenting.
+
+In file mode it returns its full findings rather than a one-line verdict; pass
+those through to the human intact rather than summarising them away.
 
 ### 5. Hand to the human
 
-Tell them the slice is ready in Hunk, and give them:
+Tell them where the slice is — Hunk, the sidecar file, or the notes file, named
+explicitly — and give them:
 
 - The one-line goal
 - Deterministic check results
@@ -174,10 +211,15 @@ Then stop.
    its reasoning gets re-argued by the next cold agent, which is worse than not
    recording it.
 2. Update the slice's row in `04-slices.md`.
-3. Commit code and plan edits together:
+3. In sidecar or file mode, delete the annotation file now — **before** the
+   commit. It lives in the feature directory, so committing first is how a file
+   the loop calls ephemeral ends up in the history permanently.
+4. Commit code and plan edits together:
    `feat(<feature-slug>): slice N — <name>`
-4. Clear the session comments and reload Hunk for a clean next slice.
-5. Stop. Wait to be asked for the next slice.
+5. In live mode only, clear the session comments and reload Hunk for a clean
+   next slice. There is nothing to clear in the other two modes — step 3 was
+   the equivalent.
+6. Stop. Wait to be asked for the next slice.
 
 ### After the last slice
 

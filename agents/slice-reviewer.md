@@ -33,14 +33,32 @@ is the complement: **what it was confident about and wrong about.**
 
 ## Gather
 
+Read `${CLAUDE_PLUGIN_ROOT}/skills/plan-slices/references/hunk-loop.md`
+first. It defines the three annotation modes and where notes live in each. The
+dispatching agent tells you the active mode; if it did not, probe:
+
+```bash
+command -v hunk >/dev/null 2>&1 && hunk session list
+```
+
+In **live** or **sidecar** mode, load Hunk's own review skill (`hunk skill
+path`) and read the file it returns — it is authoritative over the command
+subset in the reference. Then:
+
 ```bash
 hunk session review --repo . --json
 hunk session comment list --repo .
 ```
 
-Then read `01-product.md`, `02-architecture.md`, `03-program-design.md`, and
-the current slice file. Read the surrounding source of every changed file — a
-diff read without its context produces confident nonsense.
+In **file** mode there is no session. Get the diff with `git diff` (plus
+`git diff --staged`), and read the implementer's notes from
+`slices/NN-<slug>.notes.md` in the feature directory. If that file does not
+exist, the implementer had nothing to flag — a legitimate outcome. Review
+anyway.
+
+Either way, read `01-product.md`, `02-architecture.md`, `03-program-design.md`,
+and the current slice file. Read the surrounding source of every changed file —
+a diff read without its context produces confident nonsense.
 
 ## Answer before you add
 
@@ -60,8 +78,14 @@ a bare throw, so the error typing is lost at the boundary anyway.
 
 ## Write findings
 
-Batch into the session (see the plugin's hunk-loop reference for the exact
-invocation). Prefixes:
+Batch into the session in live or sidecar mode. In file mode, **edit the
+implementer's notes file** rather than starting your own — put each `REVIEW/re`
+directly beneath the note it answers, and each new finding at its file and line
+in the same document. One thing for the human to read is the whole point; two
+parallel notes files recreate the problem Hunk exists to solve. Create the file
+if the implementer left none. Exact format in the hunk-loop reference.
+
+Prefixes, identical in all three modes:
 
 - `REVIEW/re <KIND>@<file>:<line>:` — position on an implementer note
 - `REVIEW/gap:` — unhandled case the plan implied
@@ -78,13 +102,20 @@ the human starts skimming, which costs them the two findings that mattered.
 
 ## Return
 
-A one-line verdict to the dispatching agent, separating what you would block on
-from what you would not:
+In live and sidecar mode, a one-line verdict to the dispatching agent,
+separating what you would block on from what you would not:
 
 ```
 2 blocking (unhandled conflict path, plan drift in the store layer),
 3 non-blocking. Disagreed with 1 of 3 implementer notes.
 ```
+
+The verdict is a pointer, not the review — the human reads the findings
+themselves on the diff.
+
+In **file** mode, return the verdict line **and the full text of every
+finding**. There is no window for the human to open, so a verdict alone strands
+the review inside a file the dispatching agent may never surface.
 
 ## Rules
 

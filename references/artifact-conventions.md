@@ -81,7 +81,7 @@ their diff viewer):
    This is where wrong plans get caught.
 3. **Open questions** — batched from critical inquiry (see
    `critical-inquiry.md`).
-4. **The file path**, so the human can open it in Hunk.
+4. **The file path**, so the human can open it in Hunk or any diff viewer.
 
 Then stop. Do not draft the next phase. Do not start implementing. Do not set
 `status: approved`. Wait for a reply.
@@ -104,7 +104,9 @@ file.
 - Per slice: the code plus any intentional plan edits, in one commit.
 
 Nothing else. Review annotations live in the Hunk session and are cleared on
-approval. The blind review report is a temporary file and is deleted after
-triage. The only exception is a finding the human explicitly accepted with a
-reason — that is folded into the Decisions section of `03-program-design.md`
-so the next review does not re-litigate it.
+approval; where Hunk is unavailable they live in a temporary file that is
+deleted on approval *before* the commit, so it never enters the history. The
+blind review report is likewise temporary and is deleted after triage. The only
+exception is a finding the human explicitly accepted with a reason — that is
+folded into the Decisions section of `03-program-design.md` so the next review
+does not re-litigate it.
