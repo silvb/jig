@@ -111,7 +111,10 @@ to surface now.
 ## Step 3: Gate
 
 Stop. Present contestable decisions, assumptions, open questions, and the file
-path. Do not continue to program design.
+path. Open questions here are usually forks — retry semantics, ownership of a
+check, whether a column is nullable — so put them up as elicited options with
+the consequence of each spelled out, per `critical-inquiry.md` § How to ask. Do
+not continue to program design.
 
 For `depth: medium`, this content is merged into `01-product.md` rather than
 getting its own file, and phase 3 is skipped — go to `plan-slices` after

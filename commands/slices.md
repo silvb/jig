@@ -10,5 +10,7 @@ Feature directory: $ARGUMENTS
 Every slice needs a Verify block with a real human interaction. If you cannot
 write one, re-cut the slice — do not fall back to "run the tests".
 
-Stop at the gate. After approval, commit the four planning artifacts as one
-commit, then stop again. Do not implement slice 1 unprompted.
+Stop at the gate, and elicit the open questions — including any alternative cut
+you considered, as an option rather than a paragraph. After approval, commit the
+four planning artifacts as one commit, then stop again. Do not implement slice 1
+unprompted.

@@ -119,3 +119,9 @@ your remit.
 
 **Every finding needs a named consequence.** If you cannot say what it will
 cost, it is a preference, and it does not go in the report.
+
+**You cannot ask the human.** You write a report and it gets triaged without
+you. Where a finding hinges on something you cannot know from the code and the
+product doc, write the finding as the choice it actually is — this shape, or
+that one, and what each costs — so the triage can be a decision the human makes
+rather than a question they have to formulate.

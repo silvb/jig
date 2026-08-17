@@ -103,6 +103,15 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   blind-reviewer's must-not-read list.
 - The README's "The loop" and "Layout" sections mirror `commands/` and
   `skills/`; adding a command or skill means updating both.
+- Interactive elicitation (`AskUserQuestion`) is the default way every skill and
+  command puts a question to the human. The rule lives in `critical-inquiry.md`
+  § How to ask and is restated at each decision point: the triage in
+  `plan-product`, the gate line in all four skills and their commands, the Hunk
+  install offer and the slice hand-off in `plan-slices`, and the finding triage
+  in `commands/blind-review.md`. The mirror rule is in the three agent files —
+  subagents have no channel to the human, so they name both branches and return
+  the question upward rather than asking or guessing. A new question added to
+  any file in prose form, or a subagent told to ask, is a regression.
 
 **Skill `description:` frontmatter is the dispatch mechanism** — it is what makes
 the model reach for the skill unprompted. These are long and trigger-heavy by

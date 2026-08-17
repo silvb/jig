@@ -10,4 +10,5 @@ Feature directory: $ARGUMENTS
 Verify `02-architecture.md` is `status: approved` before starting. Typecheck
 the signature stubs before presenting, and report the result at the gate.
 
-Stop at the gate. Do not continue to slices.
+Stop at the gate, and ask the open questions as elicited options with their
+consequences named. Do not continue to slices.

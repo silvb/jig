@@ -13,7 +13,10 @@ annotations — being anchored to our reasoning is precisely what it exists to
 avoid.
 
 When it returns, present the findings and help the human triage each one into:
-fix now, follow-up (re-enters at `plan-product`), or accepted with reason.
+fix now, follow-up (re-enters at `plan-product`), or accepted with reason. Run
+that triage as elicitation — one question per finding, batched up to four in a
+call, those three dispositions as the options, with your recommendation first.
+A prose list of ten findings gets a reply about two of them.
 
 Fold accepted-with-reason findings into `03-program-design.md` § Decisions so
 the next review does not re-litigate them, then delete `05-review.md`.

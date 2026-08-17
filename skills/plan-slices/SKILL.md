@@ -97,7 +97,9 @@ Written for the human, not a test runner:
 The exact commands the implementer runs before handing over.
 ```
 
-Then stop. Gate as usual.
+Then stop. Gate as usual, and elicit the open questions — ordering is the
+contestable thing here, so offer the alternative cut you considered as an option
+rather than describing it in a paragraph.
 
 ### Commit the plan
 
@@ -122,8 +124,9 @@ npm i -g hunkdiff
 
 The loop runs without it — see the file mode in `references/hunk-loop.md` — but
 noticeably worse, because implementer and reviewer notes stop landing inline on
-the lines they are about. Make the offer, take the answer, and move on. Do not
-re-offer at every slice.
+the lines they are about. Make the offer as an elicitation — install now, or run
+in file mode — so declining is as cheap as accepting. Take the answer and move
+on. Do not re-offer at every slice.
 
 ## Part B — The slice loop
 
@@ -201,6 +204,13 @@ explicitly — and give them:
 - Deterministic check results
 - The Verify block, so they can exercise it locally
 - A one-line note on what the reviewer flagged
+
+Where the reviewer raised something blocking, elicit the disposition of each
+finding — fix in this slice, carry to a later one, or accept with a reason —
+one question per finding, batched, up to four in a call. Always include the
+option that means "hold, I want to read the diff first": the human's real answer
+often only exists after they have looked, and an option set that assumes
+otherwise pushes them into deciding blind.
 
 Then stop.
 

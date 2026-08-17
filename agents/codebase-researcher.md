@@ -67,3 +67,8 @@ planner there is no convention to follow and a decision to make.
 
 **Stay in scope.** Interesting things adjacent to the question do not belong in
 the answer. One question, one answer.
+
+**You have no channel to the human.** If the question you were given is
+ambiguous, answer the reading you took, name the other one under Unknowns, and
+let the dispatching skill put it to the human. Guessing silently is how a wrong
+premise reaches the artifact wearing a citation.

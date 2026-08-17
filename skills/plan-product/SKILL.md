@@ -33,12 +33,16 @@ schema migration, three or more layers touched, or the human cannot name the
 call stack from memory. That last test is the most reliable one and it is the
 human's to answer, not yours.
 
-Present the classification and your reasoning, and stop. Triage is a gate. If
-the human says the work is bigger than you judged, they are right — they know
-the codebase's history and you do not.
+Present the classification and your reasoning, then put the three depths up as
+an elicitation with yours first and marked `(Recommended)`, each option naming
+what it costs — which phases run and which are skipped. Triage is a gate, and
+this is the one the human is most likely to overrule: if they say the work is
+bigger than you judged, they are right, because they know the codebase's history
+and you do not. Make disagreeing a single keystroke rather than a rebuttal they
+have to write.
 
-For oneshot, say plainly that this does not need the loop and offer to just do
-it.
+For oneshot, say plainly that this does not need the loop, and make "just do it"
+one of the options rather than a sentence they have to answer.
 
 ## Step 2: Epic mode
 
@@ -48,7 +52,8 @@ feature with a one-line user-visible outcome and a dependency order. No
 mockups, no acceptance criteria; those belong to the features.
 
 Then stop. Each feature runs the full loop in its own directory. Ask which
-feature to start with.
+feature to start with as an elicitation, the features as options in dependency
+order, the first one recommended.
 
 ## Step 3: Draft `01-product.md`
 
@@ -122,7 +127,9 @@ Tailwind from CDN, no build step — and reference them from the Screens section
 ## Step 5: Gate
 
 Stop. Present contestable decisions, assumptions, open questions, and the file
-path, per `artifact-conventions.md`. Do not continue to architecture.
+path, per `artifact-conventions.md`. The open questions go up as an elicitation,
+not as a bulleted list the human has to reply to line by line. Do not continue
+to architecture.
 
 When the human approves, set `status: approved` and tell them the next step is
 `plan-architecture`. Do not run it unprompted.

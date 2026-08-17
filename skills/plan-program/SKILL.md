@@ -96,6 +96,9 @@ so the human knows the design carries less assurance than usual.
 ## Step 5: Gate
 
 Stop. Present contestable decisions, assumptions, open questions, the
-typecheck result, and the file path.
+typecheck result, and the file path. Elicit the open questions rather than
+listing them — a signature fork ("Result vs throw at this seam") is exactly the
+shape that answers itself once both options are on screen with their
+consequences.
 
 After approval, the next step is `plan-slices`. Do not run it unprompted.

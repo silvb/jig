@@ -79,12 +79,14 @@ their diff viewer):
    and does not belong here.
 2. **Assumptions and inventions** — everything filled in without being told.
    This is where wrong plans get caught.
-3. **Open questions** — batched from critical inquiry (see
-   `critical-inquiry.md`).
+3. **Open questions** — batched from critical inquiry, and asked through
+   interactive elicitation rather than as prose, so the human answers by
+   choosing rather than by composing (see `critical-inquiry.md` § How to ask).
 4. **The file path**, so the human can open it in Hunk or any diff viewer.
 
 Then stop. Do not draft the next phase. Do not start implementing. Do not set
-`status: approved`. Wait for a reply.
+`status: approved`. Wait for a reply. An elicitation is a gate like any other —
+presenting options is not the same as being given an answer.
 
 If the human's reply is partial approval with changes, edit the artifact,
 present the diff summary, and stop again.

@@ -25,6 +25,45 @@ repository. "How does auth currently work?" is research, not inquiry. Go look.
 "I assumed X — flagged in Assumptions" over stopping to ask. The gate exists
 so assumptions get caught cheaply.
 
+## How to ask
+
+Ask through interactive elicitation — the `AskUserQuestion` tool — whenever the
+question has nameable answers. A question buried in a paragraph of chat gets a
+one-word reply that resolves half of it. The same question as three labelled
+options gets answered exactly, in one keystroke, and the answer still reads
+unambiguously to a cold agent going through the transcript later.
+
+- **Options carry consequences, not just names.** "Medium — architecture merged
+  into the product doc, program design skipped" is choosable; "Medium" is a
+  quiz. If you cannot say what follows from an option, you do not understand it
+  well enough to offer it.
+- **Lead with your recommendation**, first in the list and marked
+  `(Recommended)`. You have read the material. Withholding a view to look
+  neutral hands the human work you have already done.
+- **Batch.** Up to four questions go in a single call — ask them together
+  rather than draining the human one round-trip at a time. Where answers are not
+  exclusive, allow multiple selection.
+- **Present the material first.** Elicitation replaces the question, not the
+  context behind it. At a gate, the decisions, assumptions, and file path are
+  printed in chat as usual and the open questions ride on top; a set of options
+  with nothing to read against is unanswerable.
+- **Keep the escape open.** The human can always answer in free text, so an
+  option set that misses their answer costs them nothing. Options they would
+  never pick cost them attention, which is the scarce thing.
+
+This changes how you ask, not how much. The caps above still hold — three shape
+questions before drafting, everything else batched to the gate — and so do both
+"never ask" rules. A cheaper interface is not a licence to interview.
+
+**A question is still a stop.** Offering options is not permission to act on the
+one you recommended. Wait for the answer.
+
+**Subagents cannot elicit.** `codebase-researcher`, `slice-reviewer`, and
+`blind-reviewer` have no channel to the human. A question that surfaces inside
+one travels back to the dispatching skill in its return value, and the skill
+asks it. A subagent that answers on the human's behalf has invented a decision
+and labelled it a finding.
+
 ## Product phase
 
 - Who is explicitly *not* a user of this? What did we decide not to serve?

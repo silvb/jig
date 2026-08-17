@@ -21,4 +21,8 @@ loosening types), self-annotate into the selected channel, dispatch
 `slice-reviewer` with the active mode, and hand it to the human with the Verify
 block and the path to the annotations.
 
+Where the reviewer flagged something blocking, elicit the disposition of each
+finding — fix now, carry to a later slice, or accept with a reason — and always
+offer "hold, I'll read the diff first" as an option.
+
 Stop. Do not start the following slice.

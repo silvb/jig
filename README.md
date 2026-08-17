@@ -99,6 +99,12 @@ tests, or when you ask for it by name.
 **Self-healing has a fuse.** Three attempts per failing check, then it stops
 and reports. Never by disabling tests or loosening types.
 
+**Questions are asked, not narrated.** Every decision the loop needs from you —
+the depth triage, the open questions at each gate, the disposition of a review
+finding — arrives as a choice with the options and their consequences on screen,
+not as a paragraph you have to reply to. Free text always still works; the
+options exist so the common answer costs one keystroke.
+
 **Artifacts are the loop's state.** Hand a fresh agent nothing but a feature
 directory path and `/jig:slice-next` and it resumes correctly.
 
@@ -125,7 +131,7 @@ skills/
   plan-slices/         + references/hunk-loop.md
 references/
   artifact-conventions.md    layout, frontmatter, gates, resumability
-  critical-inquiry.md        per-phase questions that change the artifact
+  critical-inquiry.md        per-phase questions, and how to put them
 agents/
   codebase-researcher.md  slice-reviewer.md  blind-reviewer.md
 commands/
