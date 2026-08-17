@@ -7,8 +7,9 @@ description: Phase 3 of the planning loop — go one level below architecture in
 
 Phase 3 of 4. Produces `03-program-design.md`.
 
-Read `${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md` and
-`${CLAUDE_PLUGIN_ROOT}/references/critical-inquiry.md` before drafting.
+Read `${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md`,
+`${CLAUDE_PLUGIN_ROOT}/references/critical-inquiry.md`, and
+`${CLAUDE_PLUGIN_ROOT}/references/sketch-checkpoints.md` before drafting.
 
 Requires an approved `02-architecture.md`. Skipped entirely for
 `depth: medium`.
@@ -37,7 +38,40 @@ Cite `file:line`. Matching the codebase's existing patterns matters more here
 than importing better ones; a locally consistent codebase beats a globally
 optimal one that nobody can navigate.
 
-## Step 2: Draft `03-program-design.md`
+## Step 2: Sketch the code's shape in the conversation
+
+Four checkpoints, in this order, before the file exists — each drawn in chat at
+full fidelity with one elicitation on it, per
+`${CLAUDE_PLUGIN_ROOT}/references/sketch-checkpoints.md`. Notation for the first
+two is in `references/callstack-notation.md`; both use diff syntax, because what
+is changing is the interesting part and a full tree buries it.
+
+**1. The call stacks.** The diff-annotated trees. Ask where the new code hangs
+off the existing tree, because that is the decision the tree makes visible and
+prose hides.
+
+**2. The file tree.** The layout diff with a purpose per file. The fork worth
+drawing twice is "beside the code it resembles" versus "in a new module of its
+own" — a placement argument settles in seconds against two trees and not at all
+against a paragraph.
+
+**3. The signatures.** Real declarations, no bodies. Ask the question the type
+answers: what empty, null, and failure look like at this seam. A `Result` and a
+throw are the archetypal two-drawing fork, and the human picks one on sight.
+
+**4. The test plan.** The test names. Naming them is what settles the meaning
+of done, so it is worth a stop of its own — the useful question is which
+behaviour has no name in the list yet.
+
+Invariants and Decisions do not get checkpoints. Invariants are read off the
+drawings above once they are settled, and Decisions is a record that grows as
+the loop runs, not a shape to choose.
+
+## Step 3: Draft `03-program-design.md`
+
+Write the settled drawings in, as drawn. Where a checkpoint turned on a real
+fork, that fork and its loser belong in Decisions — this is the section the
+slice reviewer reads later to avoid re-litigating what you already settled.
 
 ```markdown
 ---
@@ -70,12 +104,6 @@ Trade-offs settled during planning and during slice review. Each entry: the
 decision, the alternative, and why. This section grows as the loop runs.
 ```
 
-## Step 3: Notation
-
-Read `references/callstack-notation.md` for the call-stack and file-tree
-formats. Both use diff syntax, because what is changing is the interesting part
-and a full tree buries it.
-
 ## Step 4: Typecheck the stubs
 
 Write the Signatures section as real, compilable declarations — then verify it.
@@ -90,6 +118,12 @@ has no verification at all; this one gets a little.
 Delete the scratch file afterwards. If the typecheck fails, fix the design
 before presenting — do not present a design that does not hold together.
 
+That rule puts this step earlier than its number suggests: run it against the
+signatures before they go up as a checkpoint, not only before the gate. Asking
+a human to weigh two seams that do not compile spends their attention on a
+question you could have closed yourself. Report the result at the gate either
+way, so it is on the record.
+
 For untyped or dynamically typed stacks, skip this step and say so at the gate,
 so the human knows the design carries less assurance than usual.
 
@@ -99,6 +133,7 @@ Stop. Present contestable decisions, assumptions, open questions, the
 typecheck result, and the file path. Elicit the open questions rather than
 listing them — a signature fork ("Result vs throw at this seam") is exactly the
 shape that answers itself once both options are on screen with their
-consequences.
+consequences, which is why most of them belong at the signatures checkpoint and
+not here.
 
 After approval, the next step is `plan-slices`. Do not run it unprompted.

@@ -71,6 +71,13 @@ The same applies to claims about existing code: cite `path/to/file.ts:42`.
 Every phase ends with a hard stop. The stop is the entire point of the phase —
 a phase that flows straight into the next one has bought nothing.
 
+The gate is not the first time the human sees the material. Each contestable
+section is drawn in the conversation and settled before the document is written
+(`sketch-checkpoints.md`), so by the time the file exists its shape is already
+agreed. That makes the gate a confirmation of the whole against its parts, which
+is a different question from "is any of this right" and a much cheaper one to
+answer. It stays a hard stop either way.
+
 At the gate, present in chat (not the full document — the human reads that in
 their diff viewer):
 
@@ -79,9 +86,10 @@ their diff viewer):
    and does not belong here.
 2. **Assumptions and inventions** — everything filled in without being told.
    This is where wrong plans get caught.
-3. **Open questions** — batched from critical inquiry, and asked through
-   interactive elicitation rather than as prose, so the human answers by
-   choosing rather than by composing (see `critical-inquiry.md` § How to ask).
+3. **Open questions** — whatever the checkpoints did not already settle, batched
+   from critical inquiry, and asked through interactive elicitation rather than
+   as prose, so the human answers by choosing rather than by composing (see
+   `critical-inquiry.md` § How to ask).
 4. **The file path**, so the human can open it in Hunk or any diff viewer.
 
 Then stop. Do not draft the next phase. Do not start implementing. Do not set
@@ -97,7 +105,9 @@ Before finishing any phase, ask: if a fresh agent were handed only this
 directory path and no conversation history, could it continue correctly?
 
 If the answer depends on something said in chat, that something belongs in a
-file.
+file. This bites hardest around checkpoints, where a shape is agreed in
+conversation turns before the document exists: the drawing the human approved,
+and the one they rejected, both have to end up written down.
 
 ## What gets committed
 

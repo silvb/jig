@@ -36,12 +36,19 @@ with a mandatory human stop ("gate") between every step.
 ```
 commands/*.md     thin entry points — delegate to a skill, restate the invariant
    ↓              that phase most often loses, and say "stop at the gate"
-skills/*/SKILL.md the phase itself; loads the two shared references, then drafts
-   ↓
+skills/*/SKILL.md the phase itself; loads the three shared references, sketches
+   ↓              each contestable section in chat, then drafts
 references/       cross-cutting rules shared by all four skills
 skills/*/refs/    notation/format detail owned by one phase
 agents/           subagents dispatched by skills (research, review)
 ```
+
+**Every phase draws before it writes.** Each contestable section of an artifact
+is drawn in the conversation at full fidelity, gets one elicitation, and stops,
+before the file is written; the gate then confirms the assembled whole rather
+than revealing it. `references/sketch-checkpoints.md` owns the practice and the
+per-phase checkpoint sequences. This is the rule most likely to be undone by an
+edit that "simplifies" a skill back into draft-then-present.
 
 **Phases and their artifacts** — the artifacts are the loop's only state. They
 live in the *target* repo under `docs/plans/<feature-slug>/` (or
@@ -85,7 +92,7 @@ the history. The install is offered once per feature and never re-offered.
 
 ## Conventions to preserve when editing
 
-**Reference paths.** Skills load the two shared references with
+**Reference paths.** Skills load the three shared references with
 `${CLAUDE_PLUGIN_ROOT}/references/<file>.md` (absolute, plugin-relative) and
 their own with a bare `references/<file>.md`. Do not mix the two forms.
 
@@ -112,6 +119,16 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   subagents have no channel to the human, so they name both branches and return
   the question upward rather than asking or guessing. A new question added to
   any file in prose form, or a subagent told to ask, is a regression.
+- Sketch checkpoints span `sketch-checkpoints.md` (the practice and the
+  per-phase table), a "Sketch … in the conversation" step in all four
+  `SKILL.md` files, a "draw before you write" line in all four phase commands,
+  the timing rules in `critical-inquiry.md`, and the gate preamble in
+  `artifact-conventions.md`. The per-phase checkpoint sequences are stated
+  twice on purpose — the table in `sketch-checkpoints.md` and the numbered
+  list in each skill — so adding or dropping a checkpoint means editing both.
+  The two caps that keep this from becoming an interview are one checkpoint per
+  section rather than per instance, and no checkpoint on sections that merely
+  transcribe or follow from what is already settled.
 
 **Skill `description:` frontmatter is the dispatch mechanism** — it is what makes
 the model reach for the skill unprompted. These are long and trigger-heavy by

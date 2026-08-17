@@ -9,14 +9,24 @@ the artifact.
 
 ## Timing rules
 
-**Before drafting** — ask only questions whose answers change the *shape* of
-the artifact: a different set of screens, a different contract, a different
-slice ordering. Hard cap of three. More than three and you are interviewing
-rather than drafting.
+**While drafting** — the questions that change the *shape* of the artifact
+ride on the material, at checkpoints. A different set of screens, a different
+contract, a different slice ordering: draw it, then ask about the drawing. See
+`sketch-checkpoints.md` for the mechanics. This is the main channel and it has
+no cap, because a checkpoint asks the human to react to something concrete
+rather than to compose the drawing in their own head first.
+
+**Blind, before there is anything to look at** — hard cap of three. Some
+questions genuinely precede the material: you cannot sketch a workflow for a
+feature whose user you have not established. Three of those, then draw
+something. Past three you are interviewing, and the interview is what
+checkpoints replace.
 
 **At the gate** — everything else, batched into the Open questions section.
 Edge cases, error handling, scale concerns. These refine an artifact that
-already exists, so they cost the human nothing to defer.
+already exists, so they cost the human nothing to defer. Expect this list to be
+short: the shape questions were settled at the checkpoints, and a gate still
+carrying six of them means the drawing came too late.
 
 **Never ask** what a `codebase-researcher` subagent could answer by reading the
 repository. "How does auth currently work?" is research, not inquiry. Go look.
@@ -24,6 +34,13 @@ repository. "How does auth currently work?" is research, not inquiry. Go look.
 **Never ask** a question you can answer with a default plus a flag. Prefer
 "I assumed X — flagged in Assumptions" over stopping to ask. The gate exists
 so assumptions get caught cheaply.
+
+That last rule is about questions, not about drawings. A defaultable decision
+still gets drawn — your default is what the sketch shows, and showing it is how
+the human catches it in two seconds rather than at the gate. It is the *stop*
+that a good default makes unnecessary, and only when nothing else in that
+section is contestable either; see `sketch-checkpoints.md` § Which sections earn
+one.
 
 ## How to ask
 
@@ -44,16 +61,24 @@ unambiguously to a cold agent going through the transcript later.
   rather than draining the human one round-trip at a time. Where answers are not
   exclusive, allow multiple selection.
 - **Present the material first.** Elicitation replaces the question, not the
-  context behind it. At a gate, the decisions, assumptions, and file path are
-  printed in chat as usual and the open questions ride on top; a set of options
-  with nothing to read against is unanswerable.
+  context behind it. At a checkpoint the material is the drawing itself; at a
+  gate it is the decisions, assumptions, and file path, printed in chat as usual
+  with the open questions riding on top. A set of options with nothing to read
+  against is unanswerable.
+- **Where the fork is visual, make the options visual.** Two candidate
+  wireframes or two candidate signatures belong in the per-option previews, not
+  in prose above them (`sketch-checkpoints.md` § Draw variants when the fork is
+  real).
 - **Keep the escape open.** The human can always answer in free text, so an
   option set that misses their answer costs them nothing. Options they would
   never pick cost them attention, which is the scarce thing.
 
-This changes how you ask, not how much. The caps above still hold — three shape
-questions before drafting, everything else batched to the gate — and so do both
-"never ask" rules. A cheaper interface is not a licence to interview.
+This changes how you ask, not how much. The timing rules above still hold —
+three blind questions at most, shape questions on the material, everything else
+batched to the gate — and so do both "never ask" rules. A cheaper interface is
+not a licence to interview, and neither is a checkpoint: what makes a checkpoint
+cheap is the drawing attached to it, so one with nothing to look at is just an
+interview question wearing the name.
 
 **A question is still a stop.** Offering options is not permission to act on the
 one you recommended. Wait for the answer.
@@ -111,3 +136,9 @@ not like a checklist. One sharp question is worth six generic ones. If the plan
 genuinely has no gaps at this phase, say that and move on; manufacturing
 concerns to look thorough wastes the human's attention and teaches them to skim
 the gate.
+
+The same applies at a checkpoint. If the drawing has one obvious reading and no
+fork worth putting up, show it, say that you see nothing contestable in it, and
+go on to the next section. A checkpoint that exists only to prove you stopped is
+worse than no checkpoint, because it trains the human to approve without
+looking — and the whole practice runs on them looking.

@@ -7,8 +7,9 @@ description: Phase 2 of the planning loop — design how services, endpoints, sc
 
 Phase 2 of 4. Produces `02-architecture.md`.
 
-Read `${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md` and
-`${CLAUDE_PLUGIN_ROOT}/references/critical-inquiry.md` before drafting.
+Read `${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md`,
+`${CLAUDE_PLUGIN_ROOT}/references/critical-inquiry.md`, and
+`${CLAUDE_PLUGIN_ROOT}/references/sketch-checkpoints.md` before drafting.
 
 Requires an approved `01-product.md`. If it does not exist or is still
 `status: draft`, stop and say so.
@@ -35,7 +36,39 @@ inconclusive, write "unknown" — that is a useful finding, not a failure.
 
 Skip research only for genuinely greenfield work with no repository to read.
 
-## Step 2: Draft `02-architecture.md`
+## Step 2: Sketch the seams in the conversation
+
+Four checkpoints, in this order, before the file exists — each drawn in chat at
+full fidelity with one elicitation on it, per
+`${CLAUDE_PLUGIN_ROOT}/references/sketch-checkpoints.md`.
+
+**1. The flow.** The Mermaid sequence diagram, with the participants you
+actually mean. Its contestable part is the participant list: every box on it is
+a component that now knows about this feature, and that is the coupling
+decision, made before anyone calls it one.
+
+**2. The contract.** Format in `references/contract-design.md`. The fork here
+is nearly always a real one — where a check lives, what an error looks like on
+the wire, whether a field is optional — so draw the two candidate shapes and
+let the human choose between them rather than critique one.
+
+**3. The data model.** The schema diff and the query shapes that justify it.
+Ask about the column that is about to be nullable, and about what happens to
+rows that already exist.
+
+**4. The failure modes.** The table, filled in honestly. This is where the
+phase earns its keep, so it gets its own stop rather than arriving as the tail
+of a finished document. A row whose retry column says no, against a client that
+will retry anyway, is the finding — surface it here.
+
+Current state, migration and rollback, and boundaries do not get checkpoints.
+The first is research you already did and cite; the others are consequences of
+the four drawings above, and are presented at the gate.
+
+## Step 3: Draft `02-architecture.md`
+
+Write the settled drawings in, as drawn, and record any rejected alternative
+with its reason beside the section it belongs to.
 
 ```markdown
 ---
@@ -108,13 +141,17 @@ Filling this in honestly is where most architecture bugs get caught. If a row's
 retry column is "no" and the client will retry anyway, that is a design problem
 to surface now.
 
-## Step 3: Gate
+## Step 4: Gate
 
 Stop. Present contestable decisions, assumptions, open questions, and the file
 path. Open questions here are usually forks — retry semantics, ownership of a
 check, whether a column is nullable — so put them up as elicited options with
 the consequence of each spelled out, per `critical-inquiry.md` § How to ask. Do
 not continue to program design.
+
+Most of those forks should have been settled at the checkpoints, where the
+diagram or the table that raises them was on screen. What reaches this gate is
+what the drawings did not surface.
 
 For `depth: medium`, this content is merged into `01-product.md` rather than
 getting its own file, and phase 3 is skipped — go to `plan-slices` after

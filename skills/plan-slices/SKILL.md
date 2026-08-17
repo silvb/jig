@@ -9,7 +9,8 @@ Phase 4 of 4, plus the implementation loop. Produces `04-slices.md` and
 `slices/NN-<slug>.md`.
 
 Read `${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md`,
-`${CLAUDE_PLUGIN_ROOT}/references/critical-inquiry.md`, and
+`${CLAUDE_PLUGIN_ROOT}/references/critical-inquiry.md`,
+`${CLAUDE_PLUGIN_ROOT}/references/sketch-checkpoints.md`, and
 `references/hunk-loop.md`.
 
 Models default to horizontal plans — migrations, then services, then API, then
@@ -47,6 +48,26 @@ stub. That is the middle-out ordering working as intended.
 
 Slices should land in roughly 100–200 lines. Beyond that, resteering gets
 expensive, which is the whole reason for slicing.
+
+### Sketch the cut in the conversation
+
+Two checkpoints before the file exists, per
+`${CLAUDE_PLUGIN_ROOT}/references/sketch-checkpoints.md`.
+
+**1. The slice table and its ordering.** Draw the table below in chat, rows and
+all. Ordering is the whole argument of this phase, so where you weighed a
+different cut, draw that table too and put the two up side by side — the human
+knows which risks bit them before, and reads two orderings faster than they read
+your reasoning about one.
+
+**2. The Verify blocks.** All of them together, in one checkpoint, because what
+matters is whether the sequence of them walks the feature into existence step by
+step. Ask whether each is something they would actually run. A Verify block the
+human would not bother executing is a slice that will be approved unexercised,
+which is the same failure as a green test standing in for a proof.
+
+The per-slice Scope and Out of scope sections are read off the settled table and
+`03-program-design.md` § File tree; they go straight into the files.
 
 ### `04-slices.md`
 
@@ -97,9 +118,10 @@ Written for the human, not a test runner:
 The exact commands the implementer runs before handing over.
 ```
 
-Then stop. Gate as usual, and elicit the open questions — ordering is the
-contestable thing here, so offer the alternative cut you considered as an option
-rather than describing it in a paragraph.
+Then stop. Gate as usual, and elicit whatever the two checkpoints left open.
+Ordering is the contestable thing in this phase, so if it is still unsettled at
+the gate, offer the alternative cut as a drawn option rather than describing it
+in a paragraph.
 
 ### Commit the plan
 

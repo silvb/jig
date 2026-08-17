@@ -42,10 +42,10 @@ diff viewer. The loop offers the install once and never nags.
 ## The loop
 
 ```
-/jig:product <description>      triage → 01-product.md            → gate
-/jig:architecture <dir>         research → 02-architecture.md     → gate
-/jig:program <dir>              → 03-program-design.md            → gate
-/jig:slices <dir>               → 04-slices.md → commit the plan  → gate
+/jig:product <description>      triage → sketch → 01-product.md        → gate
+/jig:architecture <dir>         research → sketch → 02-architecture.md → gate
+/jig:program <dir>              sketch → 03-program-design.md          → gate
+/jig:slices <dir>               sketch → 04-slices.md → commit plan    → gate
 
   per slice, one per turn:
     /jig:slice-next <dir>       implement → self-check → annotate
@@ -54,6 +54,11 @@ diff viewer. The loop offers the install once and never nags.
 
 /jig:blind-review <dir>         once, after the last slice
 ```
+
+`sketch` is the part you sit inside: each contestable section of the artifact
+gets drawn in the conversation and settled with you before the document is
+written. It is several stops, not one — see Drawings come before documents,
+below.
 
 Not everything needs this. `plan-product` triages first: oneshot work is
 just done, medium work merges phases 1 and 2 and skips program design, full
@@ -105,6 +110,16 @@ finding — arrives as a choice with the options and their consequences on scree
 not as a paragraph you have to reply to. Free text always still works; the
 options exist so the common answer costs one keystroke.
 
+**Drawings come before documents.** Each phase settles its material in the
+conversation, one section at a time — the workflow JSON, then the wireframes,
+then the acceptance criteria; the sequence diagram, then the contract, then the
+schema diff — drawn at full fidelity, one question on each, then a stop. The
+artifact is assembled from pieces you already agreed to, so the gate confirms
+rather than reveals. Where a fork is real you get both drawings side by side and
+pick one, instead of writing a paragraph about what is wrong with the one you
+were shown. Say "just draft it" and the whole sequence collapses to a single
+sketch.
+
 **Artifacts are the loop's state.** Hand a fresh agent nothing but a feature
 directory path and `/jig:slice-next` and it resumes correctly.
 
@@ -132,6 +147,7 @@ skills/
 references/
   artifact-conventions.md    layout, frontmatter, gates, resumability
   critical-inquiry.md        per-phase questions, and how to put them
+  sketch-checkpoints.md      drawing each section in chat before drafting
 agents/
   codebase-researcher.md  slice-reviewer.md  blind-reviewer.md
 commands/
