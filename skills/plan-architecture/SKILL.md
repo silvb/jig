@@ -34,6 +34,12 @@ citation. An uncited assertion about the codebase is a guess wearing a
 confident tone, and it is rejected at the gate. If research came back
 inconclusive, write "unknown" — that is a useful finding, not a failure.
 
+What comes back is input to your thinking, not content for the document. Do not
+pass research through into the artifact: no pasted code, no walking a file from
+top to bottom in prose, no summary of a module the reader can open. Current
+state is the few facts this design turns on, one line and one citation each. The
+rest of what you learned earns its place only if it changes a decision here.
+
 Skip research only for genuinely greenfield work with no repository to read.
 
 ## Step 2: Sketch the seams in the conversation
@@ -70,6 +76,11 @@ the four drawings above, and are presented at the gate.
 Write the settled drawings in, as drawn, and record any rejected alternative
 with its reason beside the section it belongs to.
 
+Keep it to about two screens outside the drawings, per `artifact-conventions.md`
+§ Length and duplication. This document inherits a problem statement, a set of
+users, and acceptance criteria from `01-product.md` — cite that file, never
+restate it. What is written here is what phase 2 decided and nothing else.
+
 ```markdown
 ---
 feature: <slug>
@@ -82,8 +93,8 @@ updated: YYYY-MM-DD
 # <Feature name> — architecture
 
 ## Current state
-What exists today, with file:line citations. Short. Enough that a cold reader
-knows what is being changed.
+Only the facts this design turns on — one line and one `file:line` citation
+each, ten lines at most. Not a tour of the module, and never transcribed code.
 
 ## Flow
 A Mermaid sequence diagram of the main path. One diagram, not five.

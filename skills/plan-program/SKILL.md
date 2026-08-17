@@ -38,6 +38,10 @@ Cite `file:line`. Matching the codebase's existing patterns matters more here
 than importing better ones; a locally consistent codebase beats a globally
 optimal one that nobody can navigate.
 
+As in phase 2, the research grounds your thinking and does not become a section.
+A pattern you found is worth one cited line — "errors map to HTTP at the route
+layer, `src/routes/drafts.ts:31`" — not a description of how that file works.
+
 ## Step 2: Sketch the code's shape in the conversation
 
 Four checkpoints, in this order, before the file exists — each drawn in chat at
@@ -72,6 +76,12 @@ the loop runs, not a shape to choose.
 Write the settled drawings in, as drawn. Where a checkpoint turned on a real
 fork, that fork and its loser belong in Decisions — this is the section the
 slice reviewer reads later to avoid re-litigating what you already settled.
+
+This document is nearly all drawings, which is how it should be: call stacks,
+a file tree, signatures, a list of test names. The prose between them is what
+`artifact-conventions.md` § Length and duplication budgets to two screens. The
+contract lives in `02-architecture.md` § Contract — cite it, do not copy it, or
+the two will disagree by slice three and nobody will know which one is current.
 
 ```markdown
 ---

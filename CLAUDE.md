@@ -128,6 +128,14 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   subagents have no channel to the human, so they name both branches and return
   the question upward rather than asking or guessing. A new question added to
   any file in prose form, or a subagent told to ask, is a regression.
+- Artifact brevity lives in `artifact-conventions.md` § Length and duplication
+  (the three bloat habits, the two-screen budget, the ten-line cap on Current
+  state) and is restated where each is lost: the research step and the draft
+  step of `plan-architecture` and `plan-program`, their two commands, and
+  `agents/codebase-researcher.md` § Return findings, not tours. The rule that
+  makes it safe is that the *feature directory* is the unit that stands alone,
+  not the file — so anything loosening cross-references by path will bring the
+  duplication straight back.
 - Sketch checkpoints span `sketch-checkpoints.md` (the practice and the
   per-phase table), a "Sketch … in the conversation" step in all four
   `SKILL.md` files, a "draw before you write" line in all four phase commands,

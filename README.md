@@ -120,8 +120,17 @@ pick one, instead of writing a paragraph about what is wrong with the one you
 were shown. Say "just draft it" and the whole sequence collapses to a single
 sketch.
 
+**Plans are skimmable, not thorough.** Two screens outside the drawings, and
+Current state capped at ten lines. The artifacts cite code rather than
+transcribing it, and cite each other rather than repeating — you can open a
+file, and the phase that already settled something is one directory entry away.
+A plan that reads like a Sunday afternoon is a plan nobody re-reads at slice
+four.
+
 **Artifacts are the loop's state.** Hand a fresh agent nothing but a feature
-directory path and `/jig:slice-next` and it resumes correctly.
+directory path and `/jig:slice-next` and it resumes correctly. The unit that
+stands alone is the directory, not any one file — which is what lets each
+document stay short.
 
 **Ephemeral by default.** Review annotations live in the Hunk session and are
 cleared on approval. The blind review report is deleted after triage. What gets

@@ -66,6 +66,47 @@ above" or "per the architecture doc". A cold agent reading
 
 The same applies to claims about existing code: cite `path/to/file.ts:42`.
 
+## Length and duplication
+
+A planning artifact is skimmed, not studied. The human is deciding whether to
+let work proceed, and a cold agent is looking for the one section it needs to
+act on. Both are served by a document that fits on two screens. Neither is
+served by one that restates its own inputs at length.
+
+Three habits produce nearly all of the bloat, and they share a fix.
+
+**Transcribing code.** A paragraph describing what `publishDraft` does is longer
+than `publishDraft`, less precise than reading it, and wrong the moment the
+function changes. Cite `src/draft/publish.ts:42` and move on — every reader of
+these documents can open a file. What belongs in the artifact is what opening
+the file will *not* tell you: an invariant that nothing enforces, a behaviour
+spread across four call sites, a convention that holds in three places and
+breaks in the fourth. State the finding, not the source.
+
+**Restating an upstream artifact.** `02-architecture.md` does not re-explain the
+problem, the users, or the acceptance criteria — `01-product.md` holds them and
+is one directory entry away. Reference it by path and write only what this phase
+decided. The unit that has to stand alone is the feature directory, not the
+file; a document that stands alone on its own has usually managed it by
+duplicating something that will now drift out of sync.
+
+**Narrating the research.** What a `codebase-researcher` returned is input to
+your thinking, not a section of the artifact. Current state carries the few
+facts the design actually turns on, cited, and stops. A fact that changes no
+decision in this document is not current state — it is background, and the
+reader already has the repository.
+
+### The budget
+
+Excluding its drawings — wireframes, diagrams, tables, signature blocks, which
+are the dense part and the whole point — a planning artifact runs to about two
+screens. Current state, specifically, is ten lines at most. An artifact well
+over that is carrying something it should be citing.
+
+The skim test: read only the headings and the drawings. If that is not enough to
+know what was decided, the decisions are buried in prose, and the document needs
+restructuring rather than trimming.
+
 ## Gates
 
 Every phase ends with a hard stop. The stop is the entire point of the phase —

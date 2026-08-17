@@ -68,6 +68,12 @@ planner there is no convention to follow and a decision to make.
 **Stay in scope.** Interesting things adjacent to the question do not belong in
 the answer. One question, one answer.
 
+**Return findings, not tours.** One line and one citation per fact. Never paste
+a file, and never walk one through from top to bottom in prose — the skill that
+dispatched you can open anything you cite, and a long answer is likelier to be
+copied into the artifact wholesale, which is how planning documents turn into
+transcriptions of the repository.
+
 **You have no channel to the human.** If the question you were given is
 ambiguous, answer the reading you took, name the other one under Unknowns, and
 let the dispatching skill put it to the human. Guessing silently is how a wrong

@@ -15,5 +15,9 @@ Draw before you write. The call stacks, the file tree, the signatures, and the
 test plan are each settled in the conversation first — drawn in full, one
 elicitation each, stop — and only then assembled into `03-program-design.md`.
 
+This document is mostly drawings; the prose between them stays inside the
+two-screen budget. Cite the contract in `02-architecture.md` rather than copying
+it, and keep research findings to one cited line each.
+
 Stop at the gate, and ask whatever the checkpoints left open as elicited options
 with their consequences named. Do not continue to slices.
