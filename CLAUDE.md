@@ -21,8 +21,17 @@ claude plugin details jig         # component inventory + projected token cost
 claude plugin tag .               # cut a {name}--v{version} release tag
 ```
 
-`validate` passes clean; keep it that way. `details` is the closest thing to a
-test: it reports what actually loads and what it costs in context.
+`validate` passes clean; keep it that way — but note it checks the *manifests*
+only. It does not parse skill frontmatter, so a `SKILL.md` whose YAML is broken
+validates green while loading with no name and no description, which silently
+removes the skill from dispatch. `tag` is the command that catches that, and it
+is the last thing run before a release rather than the first, so run it early
+after editing any frontmatter. The usual cause is an unquoted description
+containing a colon followed by a space; quote the whole value.
+
+`details` is the closest thing to a test: it reports what actually loads and
+what it costs in context. A skill listed there with an empty description is the
+same bug seen from the other side.
 
 To exercise a change end to end, install the local checkout as a marketplace
 (`/plugin marketplace add /home/silv/s/jig`) and run the loop against a scratch
