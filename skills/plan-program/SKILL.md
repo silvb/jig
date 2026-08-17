@@ -1,6 +1,6 @@
 ---
 name: plan-program
-description: Phase 3 of the planning loop — go one level below architecture into the shape of the code: call-stack trees, file-tree diffs, and type and function signatures, before any implementation is written. Use this after plan-architecture is approved, and whenever the user wants to decide how code should be structured, what functions should exist, where files should live, or what the call flow looks like. Produces a committed 03-program-design.md and typechecks its own signature stubs.
+description: "Phase 3 of the planning loop — go one level below architecture into the shape of the code: call-stack trees, file-tree diffs, and type and function signatures, before any implementation is written. Use this after plan-architecture is approved, and whenever the user wants to decide how code should be structured, what functions should exist, where files should live, or what the call flow looks like. Produces a committed 03-program-design.md and typechecks its own signature stubs."
 ---
 
 # Program design
