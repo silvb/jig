@@ -120,6 +120,11 @@ pick one, instead of writing a paragraph about what is wrong with the one you
 were shown. Say "just draft it" and the whole sequence collapses to a single
 sketch.
 
+**Plans record decisions, not the work of deciding.** Outcomes rather than the
+investigation that produced them, one line per rejected alternative rather than
+an argument, and no section for something this feature does not have — a
+feature with no database gets no Data model heading, not a heading over "N/A".
+
 **Plans are skimmable, not thorough.** Two screens outside the drawings, and
 Current state capped at ten lines. The artifacts cite code rather than
 transcribing it, and cite each other rather than repeating — you can open a

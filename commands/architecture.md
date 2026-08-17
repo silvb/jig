@@ -16,6 +16,11 @@ ten lines at most — no transcribed code, no walking a file through in prose, n
 restating the problem or the acceptance criteria that `01-product.md` already
 holds. Cite files and upstream artifacts by path and let the reader open them.
 
+Record outcomes, not the investigation that produced them, and rejected
+alternatives in one line rather than an argument. Drop template sections this
+feature does not have — no database means no Data model and no migration, not a
+heading over "N/A".
+
 Draw before you write. The flow diagram, the contract, the data model, and the
 failure-modes table are each settled in the conversation first — drawn in full,
 one elicitation each, stop — and only then assembled into `02-architecture.md`.

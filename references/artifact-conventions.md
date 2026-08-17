@@ -15,6 +15,11 @@ diff. Two things follow, and most of the rules below are downstream of them:
    memory must be able to read the feature directory and resume. Anything that
    only exists in chat is lost.
 
+When those two pull apart, the human wins. An agent that misreads a plan is
+caught by the human who did not; a human who cannot hold the plan in their head
+has nothing left to catch it with, and re-steering the next phase is how this
+loop actually recovers.
+
 ## Directory layout
 
 ```
@@ -66,6 +71,40 @@ above" or "per the architecture doc". A cold agent reading
 
 The same applies to claims about existing code: cite `path/to/file.ts:42`.
 
+## Record decisions, not the work
+
+An artifact is the record of what was settled. It is not a record of how it came
+to be settled, and that difference accounts for most of the pages nobody reads.
+
+**Outcomes, not the investigation.** What you looked at, what you ruled out on
+the way, which subagent turned up what, the order in which you came to
+understand the domain — none of it belongs. The reader wants the position you
+arrived at, with enough citation to check it. "Status transitions go through one
+function, `src/draft/draft-store.ts:140`" is the finding; the search that located
+it is not part of the design.
+
+**One line per rejected alternative.** A decision worth recording is worth
+recording as "chose X over Y because Z", the same form the gate uses. The reason
+to write the loser down at all is to stop the next cold agent from re-proposing
+it, and one line does that — a three-paragraph rebuttal does not do it better.
+Sustained argument also gives a document a defensive tone, which makes it harder
+to contest later, and being contestable is the whole point of committing it.
+
+**Omit sections that do not apply.** The template in each skill is a menu, not a
+form. A feature that touches no database has no Data model section — not a Data
+model section reading "N/A". An empty heading costs a line in the skim and
+teaches the reader that headings are not load-bearing, which is expensive here,
+because they are.
+
+Two headings earn a sentence rather than deletion when they come up empty,
+because their emptiness is itself a finding: an Out of scope with nothing in it
+usually means nothing was cut, and a Failure modes with nothing in it usually
+means nobody looked. Say which is true instead of dropping the heading.
+
+A section another artifact cites by name — `02-architecture.md § Contract`,
+`03-program-design.md § Decisions` — is omitted only when the thing itself does
+not exist, never merely because it is short.
+
 ## Length and duplication
 
 A planning artifact is skimmed, not studied. The human is deciding whether to
@@ -90,11 +129,12 @@ decided. The unit that has to stand alone is the feature directory, not the
 file; a document that stands alone on its own has usually managed it by
 duplicating something that will now drift out of sync.
 
-**Narrating the research.** What a `codebase-researcher` returned is input to
-your thinking, not a section of the artifact. Current state carries the few
-facts the design actually turns on, cited, and stops. A fact that changes no
-decision in this document is not current state — it is background, and the
-reader already has the repository.
+**Narrating the research.** The sharpest case of recording work rather than
+outcomes, and common enough to name on its own: what a `codebase-researcher`
+returned is input to your thinking, not a section of the artifact. Current state
+carries the few facts the design actually turns on, cited, and stops. A fact
+that changes no decision in this document is not current state — it is
+background, and the reader already has the repository.
 
 ### The budget
 
@@ -148,7 +188,7 @@ directory path and no conversation history, could it continue correctly?
 If the answer depends on something said in chat, that something belongs in a
 file. This bites hardest around checkpoints, where a shape is agreed in
 conversation turns before the document exists: the drawing the human approved,
-and the one they rejected, both have to end up written down.
+and one line naming the one they rejected, both have to end up written down.
 
 ## What gets committed
 

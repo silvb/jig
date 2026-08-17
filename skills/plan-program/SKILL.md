@@ -74,8 +74,10 @@ the loop runs, not a shape to choose.
 ## Step 3: Draft `03-program-design.md`
 
 Write the settled drawings in, as drawn. Where a checkpoint turned on a real
-fork, that fork and its loser belong in Decisions — this is the section the
-slice reviewer reads later to avoid re-litigating what you already settled.
+fork, that fork and its loser belong in Decisions, one line each — this is the
+section the slice reviewer reads later to avoid re-litigating what you already
+settled, and a line does that as well as a page. Decisions is never omitted; it
+grows for the rest of the loop and other files cite it by name.
 
 This document is nearly all drawings, which is how it should be: call stacks,
 a file tree, signatures, a list of test names. The prose between them is what

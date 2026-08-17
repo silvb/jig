@@ -101,6 +101,14 @@ the history. The install is offered once per feature and never re-offered.
 
 ## Conventions to preserve when editing
 
+**When the two purposes conflict, the human wins.** An artifact is both a
+reviewable document and the state a cold agent resumes from, and those pull
+apart often enough that `artifact-conventions.md` § Why these conventions exist
+ranks them. Reach for it whenever a rule would make a document more complete for
+the next agent at the cost of the human's ability to hold it in their head — the
+human is the one who re-steers the next phase, so their comprehension is what
+recovers from everything else going wrong.
+
 **Reference paths.** Skills load the three shared references with
 `${CLAUDE_PLUGIN_ROOT}/references/<file>.md` (absolute, plugin-relative) and
 their own with a bare `references/<file>.md`. Do not mix the two forms.
@@ -128,14 +136,27 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   subagents have no channel to the human, so they name both branches and return
   the question upward rather than asking or guessing. A new question added to
   any file in prose form, or a subagent told to ask, is a regression.
-- Artifact brevity lives in `artifact-conventions.md` § Length and duplication
-  (the three bloat habits, the two-screen budget, the ten-line cap on Current
-  state) and is restated where each is lost: the research step and the draft
-  step of `plan-architecture` and `plan-program`, their two commands, and
-  `agents/codebase-researcher.md` § Return findings, not tours. The rule that
-  makes it safe is that the *feature directory* is the unit that stands alone,
-  not the file — so anything loosening cross-references by path will bring the
-  duplication straight back.
+- Artifact brevity is two sibling sections of `artifact-conventions.md`.
+  § Record decisions, not the work governs *what* goes in — outcomes rather than
+  the investigation, one line per rejected alternative, and omit template
+  sections that do not apply. § Length and duplication governs *how much* — the
+  three bloat habits, the two-screen budget, the ten-line cap on Current state.
+  Both are restated where each is actually lost: the research and draft steps of
+  `plan-architecture` and `plan-program`, the draft step of `plan-product`,
+  `commands/architecture.md` and `commands/program.md`, and
+  `agents/codebase-researcher.md` § Return findings, not tours.
+  Three carve-outs keep omission from deleting signal: Out of scope and Failure
+  modes get a sentence rather than a deletion when empty, because their
+  emptiness is a finding, and each is stated with its section (`plan-product`,
+  `plan-architecture`); and a section another artifact cites by name
+  (`§ Contract`, `§ Decisions`) goes only when the thing itself does not exist,
+  which is restated for Decisions in `plan-program` and nowhere for Contract,
+  because phase 2 without a contract is not a case worth defending against.
+  The rule that makes the whole thing safe is that the *feature directory* is
+  the unit that stands alone, not the file — so anything loosening
+  cross-references by path brings the duplication back.
+  The templates in the four skills are menus, not forms; an edit that reads
+  as "always render every section" is a regression.
 - Sketch checkpoints span `sketch-checkpoints.md` (the practice and the
   per-phase table), a "Sketch … in the conversation" step in all four
   `SKILL.md` files, a "draw before you write" line in all four phase commands,

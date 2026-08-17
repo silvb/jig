@@ -73,13 +73,20 @@ the four drawings above, and are presented at the gate.
 
 ## Step 3: Draft `02-architecture.md`
 
-Write the settled drawings in, as drawn, and record any rejected alternative
-with its reason beside the section it belongs to.
+Write the settled drawings in, as drawn, and record any rejected alternative in
+one line — "chose X over Y because Z", not the argument that got you there.
 
 Keep it to about two screens outside the drawings, per `artifact-conventions.md`
 § Length and duplication. This document inherits a problem statement, a set of
 users, and acceptance criteria from `01-product.md` — cite that file, never
 restate it. What is written here is what phase 2 decided and nothing else.
+
+Drop the sections this feature does not have. No persistence means no Data model
+and nothing to migrate or roll back; a change behind an existing interface may
+have no Boundaries worth naming. Do not render a heading over the word "N/A".
+Failure modes is the exception — if you believe there are none, write the
+sentence saying why, because that claim is usually wrong and stating it is how
+it gets caught.
 
 ```markdown
 ---

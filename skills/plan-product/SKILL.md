@@ -114,9 +114,15 @@ Tailwind from CDN, no build step — and reference them from the Screens section
 ## Step 4: Draft `01-product.md`
 
 Write the settled drawings in, as drawn. Where a checkpoint turned on a real
-fork, record the alternative and why it lost — in Out of scope if it was a
-scope cut, otherwise beside the section it belongs to. The artifact has to read
-the same to a cold agent whether it took one checkpoint or four.
+fork, record the alternative and why it lost in one line — in Out of scope if it
+was a scope cut, otherwise beside the section it belongs to. The artifact has to
+read the same to a cold agent whether it took one checkpoint or four.
+
+Drop the sections this feature does not have. A feature with no visual surface
+has no Screens section as templated — see `references/ascii-wireframes.md`
+§ Non-visual features for what replaces it. Out of scope is the exception: if
+nothing was cut, say so in a line rather than deleting the heading, because a
+feature that cut nothing is usually a feature nobody has scoped yet.
 
 ```markdown
 ---

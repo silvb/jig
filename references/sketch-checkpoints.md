@@ -97,6 +97,10 @@ The document remains the loop's state — see `artifact-conventions.md`
 § Resumability test. Material settled at a checkpoint was settled in chat, which
 means it is lost unless it lands in the file. Write the agreed drawing into the
 artifact as drawn, and where a checkpoint turned on a real fork, record the
-rejected alternative and the reason in the section it belongs to. A cold agent
-reading the finished artifact should not be able to tell which sections were
-checkpointed and which were not.
+rejected alternative in one line — "chose X over Y because Z", per
+`artifact-conventions.md` § Record decisions, not the work. One line is what
+stops the next cold agent re-proposing it; re-running the argument on the page
+is recording the checkpoint rather than its outcome.
+
+A cold agent reading the finished artifact should not be able to tell which
+sections were checkpointed and which were not.
