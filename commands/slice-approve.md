@@ -7,7 +7,7 @@ The human has approved the slice currently in review.
 
 1. Resolve the annotations into `03-program-design.md` § Decisions — settled
    decision plus compressed reasoning, not the raw argument.
-2. Update the slice's row in `04-slices.md` to `committed <sha>`.
+2. Update the slice's row in `04-slices.md` to `committed`.
 3. If the slice ran in sidecar or file mode, delete the annotation file now,
    before the commit — otherwise an ephemeral file lands in the history.
 4. Commit code and plan edits together, including any upstream amendment this

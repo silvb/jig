@@ -96,7 +96,10 @@ updated: YYYY-MM-DD
 | 3 | Service layer wired | real permission errors visible | pending |
 | 4 | Persistence + migration | publish survives reload | pending |
 
-Status is `pending`, `in-review`, or `committed <sha>`.
+Status is `pending`, `in-review`, or `committed` — no SHA. A commit's ID is a
+hash of its own contents, and this file is one of them, so a row naming the
+commit it ships in can never be right. `git log` maps slices to commits already:
+the message is `feat(<feature-slug>): slice N — <name>`.
 ```
 
 Each slice also gets `slices/NN-<slug>.md`:
@@ -264,7 +267,7 @@ Then stop.
    settled decision and its reasoning, compressed. A decision recorded without
    its reasoning gets re-argued by the next cold agent, which is worse than not
    recording it.
-2. Update the slice's row in `04-slices.md`.
+2. Update the slice's row in `04-slices.md` to `committed`.
 3. In sidecar or file mode, delete the annotation file now — **before** the
    commit. It lives in the feature directory, so committing first is how a file
    the loop calls ephemeral ends up in the history permanently.
