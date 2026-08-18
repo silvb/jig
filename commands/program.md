@@ -19,5 +19,11 @@ This document is mostly drawings; the prose between them stays inside the
 two-screen budget. Cite the contract in `02-architecture.md` rather than copying
 it, and keep research findings to one cited line each.
 
+Approved upstream means settled, not frozen. Where the signatures show that
+`02-architecture.md` is overbuilt or wrong, raise it at the checkpoint that
+showed it and amend that file rather than designing around it — see
+`artifact-conventions.md` § Amending an upstream artifact. Never amend it
+silently, and never write a design that contradicts it.
+
 Stop at the gate, and ask whatever the checkpoints left open as elicited options
 with their consequences named. Do not continue to slices.

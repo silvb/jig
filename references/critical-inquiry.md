@@ -109,6 +109,8 @@ and labelled it a finding.
 - What does the migration and the rollback look like? Is the rollback real?
 - What does this look like at 100× the expected volume? At zero?
 - What is now coupled that was not coupled before?
+- Does anything here make a decision in `01-product.md` look unbuildable, or far
+  more expensive than it read?
 
 ## Program design phase
 
@@ -119,6 +121,8 @@ and labelled it a finding.
 - What ordering is assumed? Is anything concurrent?
 - Which of these seams is a one-way door?
 - Which is the function that will be edited most often a year from now?
+- Which decision in `02-architecture.md` do these signatures make look
+  overbuilt? A seam that turns out to be one function is the usual one.
 
 ## Slices phase
 

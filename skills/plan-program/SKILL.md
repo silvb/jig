@@ -19,6 +19,17 @@ architecture is right the model can just cook. Every decision recorded here is
 one that would otherwise be made implicitly during code review — at the most
 expensive possible moment to change your mind.
 
+It is also the phase most likely to find that phase 2 was wrong, and that is
+half of what it is for. Architecture is decided before anyone knows what the
+code looks like, so it overbuilds — a queue for one producer, a seam between two
+things that turn out to be one function. Writing the signatures is what exposes
+that. Approved upstream means settled, not frozen: surface the contradiction as
+soon as the drawing raises it, and follow
+`${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md` § Amending an
+upstream artifact. Designing around a decision you believe is wrong is the
+failure here, and it is the easy thing to do, because the document above you is
+marked approved.
+
 This document is also the oracle the slice reviewer checks against later. There
 is no general oracle for maintainability, but for this feature, this file is
 one. Write it as something to be measured against.

@@ -69,6 +69,13 @@ which is the same failure as a green test standing in for a proof.
 The per-slice Scope and Out of scope sections are read off the settled table and
 `03-program-design.md` § File tree; they go straight into the files.
 
+Cutting is the last cheap chance to notice that phase 3 is wrong — an ordering
+that cannot be built without a seam the design puts three slices later is a
+program-design problem wearing a slicing problem's clothes. Raise it at the
+table checkpoint and follow
+`${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md` § Amending an
+upstream artifact, rather than bending the cut around it.
+
 ### `04-slices.md`
 
 ```markdown
@@ -176,6 +183,17 @@ reference.
 Follow `03-program-design.md`. Where reality contradicts the design, follow
 reality and flag it — do not silently conform the code to a plan that turned
 out wrong, and do not silently abandon the plan either.
+
+Two different things hide under "the plan was wrong", and they are handled
+differently. A local departure — this signature needed one more parameter, this
+error maps somewhere else — is an `IMPL/deviation:` note, resolved into
+`03-program-design.md` § Decisions on approval. A decision that is wrong at its
+own altitude, where the code just made that visible, is an upstream amendment:
+stop, put it to the human with the branches named, and follow
+`${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md` § Amending an
+upstream artifact. Here that section's downstream rule has teeth — an amendment
+to `02-architecture.md` mid-loop reaches `03-program-design.md`, `04-slices.md`,
+and the pending slice files, and all of it lands in this slice's commit.
 
 ### 2. Self-check
 

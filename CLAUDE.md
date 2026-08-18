@@ -157,6 +157,19 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   cross-references by path brings the duplication back.
   The templates in the four skills are menus, not forms; an edit that reads
   as "always render every section" is a regression.
+- Upstream amendment is owned by `artifact-conventions.md` § Amending an
+  upstream artifact, and restated wherever a phase meets a document it did not
+  write: the intro of `plan-architecture` and `plan-program`, Part A's cut and
+  Part B step 1 of `plan-slices`, all four of those commands, and
+  `agents/slice-reviewer.md` § What you are looking for. The three parts that
+  travel together are that the conflict is *surfaced* rather than routed around
+  (silent amendment and silent contradiction are the two failures, and both need
+  naming), that the amendment reaches every downstream artifact or says which it
+  did not, and that it rides in the commit of the work that motivated it. The
+  question that surfaces it is in `critical-inquiry.md` under phases 2 and 3. An
+  edit that turns this into "later phases may not change earlier artifacts"
+  breaks the loop's only path out of a wrong plan; one that lets a phase amend
+  without asking breaks the gate.
 - Sketch checkpoints span `sketch-checkpoints.md` (the practice and the
   per-phase table), a "Sketch … in the conversation" step in all four
   `SKILL.md` files, a "draw before you write" line in all four phase commands,

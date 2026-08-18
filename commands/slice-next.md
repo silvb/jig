@@ -21,6 +21,12 @@ loosening types), self-annotate into the selected channel, dispatch
 `slice-reviewer` with the active mode, and hand it to the human with the Verify
 block and the path to the annotations.
 
+A local departure from `03-program-design.md` is an `IMPL/deviation:` note. A
+decision that is wrong at its own altitude is an upstream amendment: stop, put
+the branches to the human, and amend every artifact the change reaches, all of
+it in this slice's commit — `artifact-conventions.md` § Amending an upstream
+artifact.
+
 Where the reviewer flagged something blocking, elicit the disposition of each
 finding — fix now, carry to a later slice, or accept with a reason — and always
 offer "hold, I'll read the diff first" as an option.

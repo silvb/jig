@@ -120,6 +120,16 @@ pick one, instead of writing a paragraph about what is wrong with the one you
 were shown. Say "just draft it" and the whole sequence collapses to a single
 sketch.
 
+**Approved upstream means settled, not frozen.** Phase 3 finding that the
+architecture was overbuilt is phase 3 doing its job — you only see that a seam
+is one function once the signatures are written. When it happens you get the
+branches as a choice: amend the upstream artifact and carry on, keep the
+decision and design within it, or stop and re-run that phase. The amendment is a
+narrow edit to the decision itself, it drags every downstream artifact it
+reaches along with it, and it rides in the same commit as the work that
+motivated it — so the change of mind reads as one diff. What never happens is a
+phase quietly writing a document that contradicts the one above it.
+
 **Plans record decisions, not the work of deciding.** Outcomes rather than the
 investigation that produced them, one line per rejected alternative rather than
 an argument, and no section for something this feature does not have — a

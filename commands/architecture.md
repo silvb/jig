@@ -25,5 +25,10 @@ Draw before you write. The flow diagram, the contract, the data model, and the
 failure-modes table are each settled in the conversation first — drawn in full,
 one elicitation each, stop — and only then assembled into `02-architecture.md`.
 
+Where the seams show a product decision is unbuildable or far more expensive
+than it looked, surface it and amend `01-product.md` rather than designing
+around it — `artifact-conventions.md` § Amending an upstream artifact. Approved
+upstream means settled, not frozen.
+
 Stop at the gate, and ask whatever the checkpoints left open as elicited options
 with their consequences named. Do not continue to program design.

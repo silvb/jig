@@ -180,6 +180,58 @@ presenting options is not the same as being given an answer.
 If the human's reply is partial approval with changes, edit the artifact,
 present the diff summary, and stop again.
 
+## Amending an upstream artifact
+
+A later phase finding that an earlier one is wrong is the loop working, not the
+loop failing. Phase 3 exists partly to test phase 2 against detail phase 2 could
+not see — the seam that looked clean until the signatures were written, the
+abstraction that turns out to be three functions and a flag. The phases run in
+order because each needs the last one settled, not because the last one is now
+beyond revision.
+
+So a contradiction with an upstream artifact is surfaced, never routed around.
+Both ways of routing around it are common:
+
+- **Designing within a decision you believe is wrong**, producing a document
+  that quietly contradicts the one above it. The artifacts now disagree, and
+  everything downstream — the slice reviewer, a cold agent resuming, the next
+  phase — measures against whichever one it happens to read.
+- **Amending it silently**, which spends the human's approval on a decision they
+  never saw. They approved the artifact; they did not approve replacing it.
+
+Put the conflict up when you hit it, at the checkpoint that raised it rather
+than saving it for the gate, as an elicitation naming the branches: amend the
+upstream artifact and continue, keep the upstream decision and design within it,
+or stop this phase and re-run the upstream one. The third is right more often
+than it looks — a change that pulls three other decisions with it is not an
+amendment, it is phase 2 again.
+
+**Amend narrowly, in place.** Edit the decision, not the document. Rule 1 above
+applies with more force here, not less: the diff of an amendment is the only
+place a reader sees the change of mind, and a reversal that arrives as a
+rewritten file is indistinguishable from a fresh draft.
+
+**Record the outcome, not the reversal.** The new decision goes in as a
+decision, with the alternative that lost in one line — and the loser is now the
+old decision, so name it: "one table rather than a table and a queue; the queue
+only ever had one producer". No revision-history section, no changelog, no
+struck-through paragraph. Git holds the history and holds it better; a document
+carrying its own past reads as one nobody trusts to be current. Bump `updated:`.
+Leave `status: approved` — it was approved, and so is this, in the same words at
+this phase's gate.
+
+**Amend downstream too, or say what is now stale.** An amendment during phase 3
+costs nothing below it, because the only document downstream is the one you are
+writing. The same amendment during the slice loop reaches
+`03-program-design.md`, `04-slices.md`, and every pending slice file, and any of
+them left alone is fiction the next agent will follow. Fix them in the same
+turn, or name the ones you did not and why.
+
+**Not everything is an amendment.** The test is whether the upstream artifact,
+read on its own, is now *wrong* — not whether it is silent. Detail below its
+altitude was always going to be settled here, and pushing it up is how
+`02-architecture.md` grows into a second program design.
+
 ## Resumability test
 
 Before finishing any phase, ask: if a fresh agent were handed only this
@@ -194,7 +246,11 @@ and one line naming the one they rejected, both have to end up written down.
 
 - The four planning artifacts, committed together after the `04-slices.md`
   gate, before the first slice.
-- Per slice: the code plus any intentional plan edits, in one commit.
+- Per slice: the code plus any intentional plan edits, in one commit — including
+  an amendment to an upstream artifact, which belongs with the work that
+  motivated it rather than in a commit of its own. That is what makes the change
+  of mind legible later: the old decision and the reason it fell over, in the
+  same diff.
 
 Nothing else. Review annotations live in the Hunk session and are cleared on
 approval; where Hunk is unavailable they live in a temporary file that is

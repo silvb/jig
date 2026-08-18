@@ -14,6 +14,12 @@ Read `${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md`,
 Requires an approved `01-product.md`. If it does not exist or is still
 `status: draft`, stop and say so.
 
+Approved does not mean frozen. Where the seams show that a product decision is
+unbuildable, or costs far more than it looked like it would, say so at the
+checkpoint that raised it rather than designing quietly around it — see
+`${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md` § Amending an
+upstream artifact for the branches and how an amendment is written.
+
 This phase settles the seams: what talks to what, in what shape, and what
 happens when it fails. It stops short of the shape of the code, which is phase
 3.

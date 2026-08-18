@@ -16,6 +16,11 @@ one elicitation each, stop — and only then assembled into `04-slices.md` and t
 per-slice files. Where you weighed a different ordering, put both tables up as
 drawn options.
 
+An ordering that cannot be built without a seam `03-program-design.md` puts
+later is a program-design problem, not a slicing one. Raise it and amend that
+file — `artifact-conventions.md` § Amending an upstream artifact — rather than
+bending the cut around it.
+
 Stop at the gate, and elicit whatever the checkpoints left open. After approval,
 commit the four planning artifacts as one commit, then stop again. Do not
 implement slice 1 unprompted.

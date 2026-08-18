@@ -30,6 +30,12 @@ is the complement: **what it was confident about and wrong about.**
 - Assumptions embedded in the code that nobody wrote down anywhere.
 - Things that are fine in this slice but will be load-bearing and wrong by
   slice four.
+- An amended plan that was only amended in one place. A plan edit in the diff is
+  a legitimate part of a slice, not drift — read the amended file as current.
+  But a decision changed in `02-architecture.md` and left standing in
+  `03-program-design.md`, `04-slices.md`, or a pending slice file is the same
+  fiction as unflagged drift, one level up, and you are the only reader
+  positioned to catch it.
 
 ## Gather
 
