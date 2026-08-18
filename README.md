@@ -158,8 +158,8 @@ document stay short.
 **Every gate ends in a commit.** Approve a phase and its artifact goes to
 `status: approved`, gets committed, and gets pushed — one `plan(<feature>): …`
 commit per phase, so the plan lands as four reviewable changesets rather than
-one wall. Each slice is committed the same way once you have tested it against
-its Verify block, code and plan edits together. The commit is how the loop
+one wall. Each slice goes the same way once you have tested it against its
+Verify block: code and plan edits in one commit, committed and pushed. The commit is how the loop
 records that a gate closed, which is why a resuming agent can read its own
 position out of `git log`; it is not permission to start the next phase.
 

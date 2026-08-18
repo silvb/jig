@@ -296,13 +296,17 @@ waits to be asked; a phase that commits and then keeps going has skipped the
 gate it just recorded.
 
 **Then per slice**, after the human has tested it against the Verify block and
-approved: the code plus any intentional plan edits, in one commit.
+approved: the code plus any intentional plan edits, in one commit, pushed like
+the planning commits.
 
 ```
 feat(<feature-slug>): slice N — <name>
 ```
 
-Slices are committed, not pushed. Push when you are asked to.
+One rule, both halves of the loop: approval means commit and push, and means
+nothing else. The remote is where the record lives, and a slice sitting
+approved-but-unpushed on one machine is the same half-finished state as an
+approved artifact that was never committed.
 
 An amendment to an upstream artifact rides in the commit of the phase or the
 slice that motivated it, never in a commit of its own — during planning that is

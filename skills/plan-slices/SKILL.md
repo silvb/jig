@@ -270,8 +270,8 @@ Then stop.
    the loop calls ephemeral ends up in the history permanently.
 4. Commit code and plan edits together — including any upstream amendment this
    slice forced, which belongs here and not in a commit of its own:
-   `feat(<feature-slug>): slice N — <name>`. Commit only; unlike the planning
-   gates, a slice is not pushed unless the human asks.
+   `feat(<feature-slug>): slice N — <name>`. Then push, as at every planning
+   gate.
 5. In live mode only, clear the session comments and reload Hunk for a clean
    next slice. There is nothing to clear in the other two modes — step 3 was
    the equivalent.

@@ -168,9 +168,10 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
 - The commit strategy is owned by `artifact-conventions.md` § What gets
   committed and restated at the tail of all four skills' gate steps and all four
   phase commands. One commit per phase, at that phase's gate, carrying
-  `status: approved` and pushed; one commit per slice, code and plan edits
-  together, not pushed. The part that is easy to lose in an edit is that the
-  commit *closes* a gate and does not open the next one — a skill that reads
+  `status: approved`; one commit per slice, code and plan edits together. Both
+  are pushed — approval means commit and push everywhere in the loop, and
+  nothing else. The part that is easy to lose in an edit is that the commit
+  *closes* a gate and does not open the next one — a skill that reads
   "approve, commit, continue" has removed the gate while appearing to strengthen
   it, which is the failure the § Gates rule exists to prevent. The other part is
   that an upstream amendment rides in the commit of whatever motivated it,
