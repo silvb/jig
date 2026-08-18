@@ -4,8 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-`jig` is a Claude Code **plugin** — prose only. There is no source code, no build,
-no test suite, no dependencies. Every file is Markdown instructions or a JSON
+`jig` is a Claude Code **plugin** — almost entirely prose. There is no build, no
+test suite, no dependencies. Nearly every file is Markdown instructions or a JSON
 manifest, and the "program" is the behaviour those instructions produce in an
 agent. Changes are reviewed by reading them, not by running them.
 
@@ -13,12 +13,19 @@ Consequence: correctness here means *internal consistency across files*. The sam
 rule is usually stated in three or four places on purpose (skill, command, agent,
 reference), so a change is not done until every copy agrees.
 
+The one exception is `hooks/`, which is executable and therefore is reviewed by
+running it. Code earns a place here only where a rule has to hold *every* time
+and a model can simply forget — `unwrap-artifacts.py` is the whole of it. Prefer
+prose, and reach for a hook only after prose has been tried against a real
+feature and lost.
+
 ## Commands
 
 ```bash
 claude plugin validate .          # manifest check (marketplace + plugin.json)
 claude plugin details jig         # component inventory + projected token cost
 claude plugin tag .               # cut a {name}--v{version} release tag
+./hooks/test-unwrap.sh            # the only executable file, the only real test
 ```
 
 `validate` passes clean; keep it that way — but note it checks the *manifests*
@@ -50,6 +57,7 @@ skills/*/SKILL.md the phase itself; loads the three shared references, sketches
 references/       cross-cutting rules shared by all four skills
 skills/*/refs/    notation/format detail owned by one phase
 agents/           subagents dispatched by skills (research, review)
+hooks/            the one deterministic rule, auto-loaded with the plugin
 ```
 
 **Every phase draws before it writes.** Each contestable section of an artifact
@@ -157,6 +165,18 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   cross-references by path brings the duplication back.
   The templates in the four skills are menus, not forms; an edit that reads
   as "always render every section" is a regression.
+- Artifact line wrapping is stated in `artifact-conventions.md` § No hard
+  wrapping and enforced by `hooks/unwrap-artifacts.py`, auto-loaded from
+  `hooks/hooks.json` with no user settings involved. Two things in that script
+  are load-bearing beyond their size. Its scope guard — path contains
+  `docs/plans/` and ends `.md` — is all that keeps a plugin-shipped hook from
+  reformatting files in repos that never asked for jig's conventions; widening
+  it is a regression. And the `additionalContext` it prints on a rewrite is what
+  stops the model's next `Edit` being written against line breaks the hook just
+  removed, so a "quieter" version that drops the notice trades a cosmetic win
+  for failed edits. It fails open by design: every error path exits 0. Run
+  `./hooks/test-unwrap.sh` after touching it — this is the one file here that
+  reading does not verify.
 - Upstream amendment is owned by `artifact-conventions.md` § Amending an
   upstream artifact, and restated wherever a phase meets a document it did not
   write: the intro of `plan-architecture` and `plan-program`, Part A's cut and

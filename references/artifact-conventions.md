@@ -71,6 +71,28 @@ above" or "per the architecture doc". A cold agent reading
 
 The same applies to claims about existing code: cite `path/to/file.ts:42`.
 
+## No hard wrapping
+
+Write each paragraph and each list item as one long line. Do not wrap prose at
+80 columns, or at any column — every tool that reads these files wraps for
+itself, and a hard wrap underneath that only costs.
+
+What it costs is the diff, which is rule 1 again from the other side. Change a
+word in the middle of a hard-wrapped paragraph and the re-flow rewrites every
+line after it, so a one-word revision arrives as five changed lines and the
+human reviewing it has to find the actual edit inside its own noise. Unwrapped,
+the diff is the sentence that changed.
+
+Line breaks that carry meaning stay: fenced blocks of every kind, tables,
+headings, frontmatter, and a deliberate two-space break. The drawings are the
+part of these documents where layout *is* the content, and nothing re-flows
+them.
+
+A hook shipped with the plugin (`hooks/unwrap-artifacts.py`) enforces this on
+every write under `docs/plans/`. It is a backstop, not the mechanism — a file it
+rewrites is a file whose line numbers just moved under you, so write it
+unwrapped and re-read before editing anything it touched.
+
 ## Record decisions, not the work
 
 An artifact is the record of what was settled. It is not a record of how it came

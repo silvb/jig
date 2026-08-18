@@ -1,0 +1,17 @@
+{
+  "description": "Unwrap hard line breaks in planning artifacts under docs/plans/ so paragraph edits produce one-line diffs",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${CLAUDE_PLUGIN_ROOT:-$PLUGIN_ROOT}/hooks/unwrap-artifacts.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

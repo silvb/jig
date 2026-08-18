@@ -130,6 +130,14 @@ reaches along with it, and it rides in the same commit as the work that
 motivated it — so the change of mind reads as one diff. What never happens is a
 phase quietly writing a document that contradicts the one above it.
 
+**Artifacts are not hard-wrapped.** Paragraphs and list items are one line
+each, and your editor, pager, or diff viewer wraps them however you like. Hard
+wrapping makes a one-word change re-flow the paragraph, so a trivial revision
+lands as five changed lines and you have to find the real edit inside the noise
+— which defeats reviewing plans as diffs. A hook enforces it on every write
+under `docs/plans/`; fenced blocks, tables, and frontmatter are never touched,
+because that is where the line breaks are the content.
+
 **Plans record decisions, not the work of deciding.** Outcomes rather than the
 investigation that produced them, one line per rejected alternative rather than
 an argument, and no section for something this feature does not have — a
@@ -177,4 +185,6 @@ agents/
 commands/
   product  architecture  program  slices
   slice-next  slice-approve  blind-review
+hooks/
+  unwrap-artifacts.py        unwraps prose in docs/plans/ on every write
 ```
