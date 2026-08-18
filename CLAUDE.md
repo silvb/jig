@@ -165,6 +165,17 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   cross-references by path brings the duplication back.
   The templates in the four skills are menus, not forms; an edit that reads
   as "always render every section" is a regression.
+- The commit strategy is owned by `artifact-conventions.md` § What gets
+  committed and restated at the tail of all four skills' gate steps and all four
+  phase commands. One commit per phase, at that phase's gate, carrying
+  `status: approved` and pushed; one commit per slice, code and plan edits
+  together, not pushed. The part that is easy to lose in an edit is that the
+  commit *closes* a gate and does not open the next one — a skill that reads
+  "approve, commit, continue" has removed the gate while appearing to strengthen
+  it, which is the failure the § Gates rule exists to prevent. The other part is
+  that an upstream amendment rides in the commit of whatever motivated it,
+  stated here, in § Amending an upstream artifact, in `plan-architecture` and
+  `plan-program`'s gate steps, and in `plan-slices` § 6 step 4.
 - Artifact line wrapping is stated in `artifact-conventions.md` § No hard
   wrapping and enforced by `hooks/unwrap-artifacts.py`, auto-loaded from
   `hooks/hooks.json` with no user settings involved. Two things in that script

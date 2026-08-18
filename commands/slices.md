@@ -1,5 +1,5 @@
 ---
-description: Phase 4 — cut the work into vertical slices, then commit the plan
+description: Phase 4 — cut the work into vertical slices, then commit them
 argument-hint: [docs/plans/<slug>]
 ---
 
@@ -21,6 +21,8 @@ later is a program-design problem, not a slicing one. Raise it and amend that
 file — `artifact-conventions.md` § Amending an upstream artifact — rather than
 bending the cut around it.
 
-Stop at the gate, and elicit whatever the checkpoints left open. After approval,
-commit the four planning artifacts as one commit, then stop again. Do not
-implement slice 1 unprompted.
+Stop at the gate, and elicit whatever the checkpoints left open. On approval set
+`status: approved`, then commit and push `04-slices.md` with the per-slice files
+— `plan(<feature-slug>): slices`. The earlier phases committed their own
+artifacts at their own gates; if one is still uncommitted, that gate did not
+close. Then stop again. Do not implement slice 1 unprompted.

@@ -177,6 +177,12 @@ Most of those forks should have been settled at the checkpoints, where the
 diagram or the table that raises them was on screen. What reaches this gate is
 what the drawings did not surface.
 
+On approval, set `status: approved`, then commit and push —
+`plan(<feature-slug>): architecture`, per `artifact-conventions.md` § What gets
+committed. Where this phase amended `01-product.md`, that edit rides in the same
+commit. Then stop; `plan-program` waits to be asked.
+
 For `depth: medium`, this content is merged into `01-product.md` rather than
-getting its own file, and phase 3 is skipped — go to `plan-slices` after
-approval.
+getting its own file, and phase 3 is skipped — so the commit amends the product
+artifact rather than adding one (`plan(<feature-slug>): architecture` still, on
+the merged file), and the next step after approval is `plan-slices`.

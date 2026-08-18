@@ -17,5 +17,7 @@ acceptance criteria are each settled in the conversation first — drawn in full
 one elicitation each, stop — and only then assembled into `01-product.md`. A
 finished document is the wrong place for the human to first meet the shape.
 
-Stop at the gate, and elicit whatever the checkpoints left open. Do not continue
-to architecture.
+Stop at the gate, and elicit whatever the checkpoints left open. On approval set
+`status: approved`, then commit and push — `plan(<feature-slug>): product`. The
+commit closes this gate; it does not open the next one. Do not continue to
+architecture.

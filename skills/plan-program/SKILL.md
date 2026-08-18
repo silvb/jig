@@ -159,4 +159,10 @@ shape that answers itself once both options are on screen with their
 consequences, which is why most of them belong at the signatures checkpoint and
 not here.
 
-After approval, the next step is `plan-slices`. Do not run it unprompted.
+On approval, set `status: approved`, then commit and push —
+`plan(<feature-slug>): program design`, per `artifact-conventions.md` § What
+gets committed. Where this phase amended `02-architecture.md`, that edit rides
+in the same commit, which is the point: the overbuilt decision and the
+signatures that exposed it land in one diff.
+
+Then the next step is `plan-slices`. Do not run it unprompted.

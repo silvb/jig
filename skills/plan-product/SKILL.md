@@ -178,5 +178,8 @@ Nothing here should be the first the human hears of it — the shape was settled
 at the checkpoints, so this gate is a confirmation of the assembled whole. If it
 is carrying a surprise, a checkpoint was skipped.
 
-When the human approves, set `status: approved` and tell them the next step is
-`plan-architecture`. Do not run it unprompted.
+When the human approves, set `status: approved`, then commit and push the
+artifact — `plan(<feature-slug>): product`, per `artifact-conventions.md`
+§ What gets committed. Tell them the next step is `plan-architecture`. Do not
+run it unprompted: the commit records that this gate closed, it does not open
+the next one.

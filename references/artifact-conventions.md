@@ -202,6 +202,10 @@ presenting options is not the same as being given an answer.
 If the human's reply is partial approval with changes, edit the artifact,
 present the diff summary, and stop again.
 
+On approval, set `status: approved`, commit, and push — see § What gets
+committed. Then stop again. The commit closes this gate; it does not open the
+next one.
+
 ## Amending an upstream artifact
 
 A later phase finding that an earlier one is wrong is the loop working, not the
@@ -266,13 +270,45 @@ and one line naming the one they rejected, both have to end up written down.
 
 ## What gets committed
 
-- The four planning artifacts, committed together after the `04-slices.md`
-  gate, before the first slice.
-- Per slice: the code plus any intentional plan edits, in one commit — including
-  an amendment to an upstream artifact, which belongs with the work that
-  motivated it rather than in a commit of its own. That is what makes the change
-  of mind legible later: the old decision and the reason it fell over, in the
-  same diff.
+**Every phase commits its own artifact at its own gate**, once the human has
+approved it in words. Set `status: approved`, commit, push:
+
+```
+plan(<feature-slug>): product
+plan(<feature-slug>): architecture
+plan(<feature-slug>): program design
+plan(<feature-slug>): slices
+```
+
+The commit carries the approved status rather than preceding it, because the
+commit is the record that the gate was passed. That makes the loop's position
+readable from `git log` alone: an artifact still uncommitted is a phase whose
+gate has not closed, which is a question a resuming agent would otherwise have
+to ask the human.
+
+Pushing is part of it. An artifact that exists on one machine is not yet the
+thing this loop claims it is — a reviewable record somebody else can open — and
+four small prose commits cost nothing to push. Where there is no remote or the
+branch has no upstream, say so once and carry on rather than inventing one.
+
+Committing is the *only* thing the approval authorises. The next phase still
+waits to be asked; a phase that commits and then keeps going has skipped the
+gate it just recorded.
+
+**Then per slice**, after the human has tested it against the Verify block and
+approved: the code plus any intentional plan edits, in one commit.
+
+```
+feat(<feature-slug>): slice N — <name>
+```
+
+Slices are committed, not pushed. Push when you are asked to.
+
+An amendment to an upstream artifact rides in the commit of the phase or the
+slice that motivated it, never in a commit of its own — during planning that is
+this phase's `plan(...)` commit, during the loop this slice's `feat(...)` one.
+That is what makes a change of mind legible later: the old decision, the reason
+it fell over, and the work that exposed it, all in one diff.
 
 Nothing else. Review annotations live in the Hunk session and are cleared on
 approval; where Hunk is unavailable they live in a temporary file that is

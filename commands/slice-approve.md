@@ -10,8 +10,9 @@ The human has approved the slice currently in review.
 2. Update the slice's row in `04-slices.md` to `committed <sha>`.
 3. If the slice ran in sidecar or file mode, delete the annotation file now,
    before the commit — otherwise an ephemeral file lands in the history.
-4. Commit code and plan edits together:
-   `feat(<feature-slug>): slice N — <name>`
+4. Commit code and plan edits together, including any upstream amendment this
+   slice forced: `feat(<feature-slug>): slice N — <name>`. Commit only — unlike
+   the planning gates, a slice is not pushed unless the human asks.
 5. If Hunk was the review surface, clear and reload it:
    `hunk session comment clear --repo . --all --yes`
    `hunk session reload --repo . -- diff`

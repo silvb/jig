@@ -26,4 +26,6 @@ showed it and amend that file rather than designing around it — see
 silently, and never write a design that contradicts it.
 
 Stop at the gate, and ask whatever the checkpoints left open as elicited options
-with their consequences named. Do not continue to slices.
+with their consequences named. On approval set `status: approved`, then commit
+and push — `plan(<feature-slug>): program design`, with any amendment to
+`02-architecture.md` in the same commit. Do not continue to slices.

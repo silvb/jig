@@ -132,14 +132,18 @@ in a paragraph.
 
 ### Commit the plan
 
-After the `04-slices.md` gate is approved, commit all planning artifacts as one
-commit, before any implementation:
+On approval, set `status: approved`, then commit and push `04-slices.md` and the
+per-slice files together, before any implementation:
 
 ```
-plan(<feature-slug>): product, architecture, program design, slices
+plan(<feature-slug>): slices
 ```
 
-This gives the human a reviewable planning changeset separate from any code.
+The earlier phases committed their own artifacts at their own gates, so by now
+the whole plan is in the history as four reviewable changesets rather than one —
+see `artifact-conventions.md` § What gets committed. If an artifact from an
+earlier phase is still uncommitted, that gate did not close; find out why before
+cutting anything.
 
 ### Check the review surface
 
@@ -264,8 +268,10 @@ Then stop.
 3. In sidecar or file mode, delete the annotation file now — **before** the
    commit. It lives in the feature directory, so committing first is how a file
    the loop calls ephemeral ends up in the history permanently.
-4. Commit code and plan edits together:
-   `feat(<feature-slug>): slice N — <name>`
+4. Commit code and plan edits together — including any upstream amendment this
+   slice forced, which belongs here and not in a commit of its own:
+   `feat(<feature-slug>): slice N — <name>`. Commit only; unlike the planning
+   gates, a slice is not pushed unless the human asks.
 5. In live mode only, clear the session comments and reload Hunk for a clean
    next slice. There is nothing to clear in the other two modes — step 3 was
    the equivalent.

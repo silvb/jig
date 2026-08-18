@@ -42,10 +42,10 @@ diff viewer. The loop offers the install once and never nags.
 ## The loop
 
 ```
-/jig:product <description>      triage → sketch → 01-product.md        → gate
-/jig:architecture <dir>         research → sketch → 02-architecture.md → gate
-/jig:program <dir>              sketch → 03-program-design.md          → gate
-/jig:slices <dir>               sketch → 04-slices.md → commit plan    → gate
+/jig:product <description>      triage → sketch → 01-product.md        → gate → commit
+/jig:architecture <dir>         research → sketch → 02-architecture.md → gate → commit
+/jig:program <dir>              sketch → 03-program-design.md          → gate → commit
+/jig:slices <dir>               sketch → 04-slices.md                  → gate → commit
 
   per slice, one per turn:
     /jig:slice-next <dir>       implement → self-check → annotate
@@ -154,6 +154,14 @@ four.
 directory path and `/jig:slice-next` and it resumes correctly. The unit that
 stands alone is the directory, not any one file — which is what lets each
 document stay short.
+
+**Every gate ends in a commit.** Approve a phase and its artifact goes to
+`status: approved`, gets committed, and gets pushed — one `plan(<feature>): …`
+commit per phase, so the plan lands as four reviewable changesets rather than
+one wall. Each slice is committed the same way once you have tested it against
+its Verify block, code and plan edits together. The commit is how the loop
+records that a gate closed, which is why a resuming agent can read its own
+position out of `git log`; it is not permission to start the next phase.
 
 **Ephemeral by default.** Review annotations live in the Hunk session and are
 cleared on approval. The blind review report is deleted after triage. What gets

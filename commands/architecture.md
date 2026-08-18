@@ -31,4 +31,6 @@ around it — `artifact-conventions.md` § Amending an upstream artifact. Approv
 upstream means settled, not frozen.
 
 Stop at the gate, and ask whatever the checkpoints left open as elicited options
-with their consequences named. Do not continue to program design.
+with their consequences named. On approval set `status: approved`, then commit
+and push — `plan(<feature-slug>): architecture`, with any amendment to
+`01-product.md` in the same commit. Do not continue to program design.
