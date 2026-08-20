@@ -53,6 +53,7 @@ diff viewer. The loop offers the install once and never nags.
     /jig:slice-approve <dir>    → record decisions → one commit → reset
 
 /jig:blind-review <dir>         once, after the last slice
+/jig:retire <dir>               carry forward what is live → delete the plan
 ```
 
 `sketch` is the part you sit inside: each contestable section of the artifact
@@ -138,6 +139,17 @@ lands as five changed lines and you have to find the real edit inside the noise
 under `docs/plans/`; fenced blocks, tables, and frontmatter are never touched,
 because that is where the line breaks are the content.
 
+**Plans introduce, they don't retell.** An artifact covers what this feature
+adds to the repository — the seams it moves, the screens it adds, the
+signatures it introduces. Not how the codebase is laid out, not a wireframe of a
+component that shipped last year, not the module map around the one table that
+changes. A description of existing code is right the day it is written and
+wrong at some unmarked point after that, and it reads as confident and cited
+the whole time. The next agent gets the current version by opening the file. If
+it can't find its way around your repo at all, that's your `CLAUDE.md`'s job to
+fix — worth doing once for every task, rather than once per feature in a
+document that then rots.
+
 **Plans record decisions, not the work of deciding.** Outcomes rather than the
 investigation that produced them, one line per rejected alternative rather than
 an argument, and no section for something this feature does not have — a
@@ -163,11 +175,16 @@ Verify block: code and plan edits in one commit, committed and pushed. The commi
 records that a gate closed, which is why a resuming agent can read its own
 position out of `git log`; it is not permission to start the next phase.
 
-**Ephemeral by default.** Review annotations live in the Hunk session and are
-cleared on approval. The blind review report is deleted after triage. What gets
-committed is code and intentional plan changes — plus findings you accepted
-with a reason, which fold into the Decisions section so they are not
-re-litigated.
+**Ephemeral by default, plans included.** Review annotations live in the Hunk
+session and are cleared on approval. The blind review report is deleted after
+triage. And once the feature is done and reviewed, the plan directory itself is
+deleted — `/jig:retire` carries what is still live (an unmeasured outcome
+signal, a deferral, a v2 you named while building v1, a finding you accepted)
+into wherever your repo already keeps future work, then removes the rest in one
+commit. The plan was committed at every gate, so `git log` still has all of it;
+what goes is its claim to be current. Keeping it costs more than it returns:
+one small change later and you have a detailed, confident, cited description of
+a system that has moved, which is worse than no description at all.
 
 ## Stack
 
@@ -192,7 +209,7 @@ agents/
   codebase-researcher.md  slice-reviewer.md  blind-reviewer.md
 commands/
   product  architecture  program  slices
-  slice-next  slice-approve  blind-review
+  slice-next  slice-approve  blind-review  retire
 hooks/
   unwrap-artifacts.py        unwraps prose in docs/plans/ on every write
 ```

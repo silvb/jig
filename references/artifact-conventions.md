@@ -127,6 +127,57 @@ A section another artifact cites by name — `02-architecture.md § Contract`,
 `03-program-design.md § Decisions` — is omitted only when the thing itself does
 not exist, never merely because it is short.
 
+## The delta, not the system
+
+An artifact introduces what this feature adds to the repository. It does not
+describe the repository.
+
+The two are easy to confuse, because a plan grounded in the codebase has to
+mention the codebase, and mentioning slides into documenting. What stops the
+slide is a question asked of every section and every drawing: is this something
+being decided here, or something that is already there? Only the first belongs.
+What is already there appears where the new work attaches to it — named, cited,
+and no further.
+
+**Do not redraw what exists.** A wireframe assembled out of components the
+project already ships is a picture of components the project already ships.
+Draw the new arrangement and the new states, and render an existing component
+as one labelled box with a citation rather than expanding it to its internals —
+see `${CLAUDE_PLUGIN_ROOT}/skills/plan-product/references/ascii-wireframes.md`
+§ Existing components. The rule climbs: a sequence diagram carries the
+participants this feature touches, not the system's participants, and a
+call-stack tree is diff-annotated because the change is the content and a full
+tree buries it.
+
+**Do not document the system.** What belongs in `02-architecture.md` is the
+seams this feature adds or moves — this endpoint, this table, this boundary
+that is now crossed. A survey of how the codebase is laid out, however
+accurate, is not a plan. It is a second copy of the repository, written once,
+diverging from the first copy immediately.
+
+Divergence is the reason, and it is worth stating plainly, because the cost
+never lands on whoever wrote the description. Code moves; a description of code
+is correct the day it is written and wrong at some unmarked point afterwards,
+and a later reader cannot tell which paragraphs have rotted. So it reads as
+confident, cited, and wrong — the most authoritative-looking thing in the
+directory and the only part nobody has checked. Cite the file instead and the
+reader gets the current version for free.
+
+The objection is that the next agent needs the context. It does not need it
+from here. An agent picking up phase 3, or slice five, reads the repository the
+same way you did, and reads it as it stands rather than as it stood two weeks
+ago. If it cannot orient itself there, the gap is in the repository's own setup
+for agents — its `CLAUDE.md`, its README, the conventions nobody has written
+down — and that gap is worth closing where it is, once, for every task anyone
+runs here. Closing it inside a feature plan closes it for one feature, and then
+the plan rots.
+
+What survives the cut is what you learned that the file will not tell the next
+reader: the invariant nothing enforces, the behaviour spread across four call
+sites, the convention that holds in three places and breaks in the fourth.
+Those are findings about existing code rather than descriptions of it, and they
+belong.
+
 ## Length and duplication
 
 A planning artifact is skimmed, not studied. The human is deciding whether to
@@ -320,4 +371,62 @@ deleted on approval *before* the commit, so it never enters the history. The
 blind review report is likewise temporary and is deleted after triage. The only
 exception is a finding the human explicitly accepted with a reason — that is
 folded into the Decisions section of `03-program-design.md` so the next review
-does not re-litigate it.
+does not re-litigate it, and carried out of the directory again when the plan
+is retired.
+
+## Retiring the plan
+
+A feature that is finished, blind-reviewed, and triaged does not need its plan
+any more. Delete the feature directory and commit the deletion:
+
+```
+plan(<feature-slug>): retire
+```
+
+The artifacts were written to be true on the day the work stopped, and the code
+starts moving again the day after. What they become is the failure § The delta,
+not the system describes, arriving from the other direction: a detailed, cited,
+confidently worded account of a system that has drifted from it, with nothing
+on its face to say how far. A plan that is obviously stale is harmless, because
+nobody trusts it. This kind is trusted, and it is trusted hardest by the cold
+agent that has nothing else to go on.
+
+Deleting it is cheap precisely because every phase committed its own artifact
+at its own gate (§ What gets committed). The plan is in the history in full, at
+every version it ever had, and `git log -- docs/plans/<feature-slug>` brings it
+back. The deletion removes its claim to be current, which was the only part
+doing harm.
+
+**What is still live goes somewhere with a future.** The directory usually
+holds a few things that outlast the feature: an outcome signal nobody has
+measured yet, an Out of scope entry that was a deferral rather than a decision,
+a blind-review finding accepted with a reason, a v2 or an adjacent feature the
+human named while building this one. Those are future work, and future work
+belongs wherever this repository already keeps future work.
+
+So look before asking. A `docs/notes/`, a roadmap or backlog file, an ADR
+directory, a `TODO.md` — a repository that plans at all usually has one, and
+putting the note anywhere else invents a second convention nobody asked for.
+Propose what you found as an elicitation; where there is genuinely no such
+place, ask the human where it goes rather than creating a directory in their
+tree. Ask in the same call that offers the retirement, so the whole thing costs
+one round trip.
+
+**Compact, and in the repository's own voice.** A handful of lines: what the
+follow-up is, and enough of why for someone to judge it in six months. Not a
+summary of the plan — the plan is in the history, and the note can cite the
+retiring commit. If nothing is still live, write nothing and say so. A
+follow-up note manufactured so that something gets carried is the staleness
+problem starting again one file across.
+
+A decision that constrains no future work does not survive at all; the code is
+the record of it now. Where its reasoning genuinely has to outlive the plan, it
+belongs in a comment at the line it constrains, in front of the next person
+about to break it — not in a document being deleted for being unreliable.
+
+Retiring is a gate like every other step in this loop. Name what will be
+deleted and what will be carried, then stop and wait: the human may know about
+work in flight that the directory does not show.
+
+An epic directory goes when its last feature does, by the same test and for the
+same reason.

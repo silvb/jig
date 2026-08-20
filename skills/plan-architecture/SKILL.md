@@ -24,6 +24,14 @@ This phase settles the seams: what talks to what, in what shape, and what
 happens when it fails. It stops short of the shape of the code, which is phase
 3.
 
+It settles the seams *this feature adds or moves* — not the system's
+architecture. The pull the other way is strong here, because the phase is named
+after the thing it must not produce: having just read four subagent reports
+about how the codebase fits together, writing that up feels like the work. It
+is not. See
+`${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md` § The delta, not the
+system.
+
 ## Step 1: Ground in the codebase
 
 Architecture written without reading the existing system is fiction. Before
@@ -55,9 +63,10 @@ full fidelity with one elicitation on it, per
 `${CLAUDE_PLUGIN_ROOT}/references/sketch-checkpoints.md`.
 
 **1. The flow.** The Mermaid sequence diagram, with the participants you
-actually mean. Its contestable part is the participant list: every box on it is
-a component that now knows about this feature, and that is the coupling
-decision, made before anyone calls it one.
+actually mean — the ones this feature touches, not a map of the system. Its
+contestable part is the participant list: every box on it is a component that
+now knows about this feature, and that is the coupling decision, made before
+anyone calls it one.
 
 **2. The contract.** Format in `references/contract-design.md`. The fork here
 is nearly always a real one — where a check lives, what an error looks like on
@@ -86,6 +95,13 @@ Keep it to about two screens outside the drawings, per `artifact-conventions.md`
 § Length and duplication. This document inherits a problem statement, a set of
 users, and acceptance criteria from `01-product.md` — cite that file, never
 restate it. What is written here is what phase 2 decided and nothing else.
+
+The same test applies to the codebase, per `artifact-conventions.md` § The
+delta, not the system: every section is what changes. A table that gains a
+column is in the data model; the four tables around it are not. A boundary this
+feature now crosses is in Boundaries; the module map it sits inside is not. If a
+paragraph would still be true had this feature never been proposed, it is
+describing the repository, and the repository describes itself better.
 
 Drop the sections this feature does not have. No persistence means no Data model
 and nothing to migrate or roll back; a change behind an existing interface may

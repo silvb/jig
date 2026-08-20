@@ -79,6 +79,7 @@ diffs:
 | 3 Program design | `plan-program` | `03-program-design.md` |
 | 4 Slices + impl loop | `plan-slices` | `04-slices.md`, `slices/NN-<slug>.md` |
 | (end) Blind review | — | `05-review.md`, deleted after triage |
+| (end) Retire | — | the whole directory is deleted; live follow-ups move into the repo |
 
 `plan-slices` is two skills in one file: **Part A** cuts the slices (phase
 4), **Part B** is the per-slice implementation loop. `/jig:slices` invokes Part A
@@ -139,11 +140,30 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   command puts a question to the human. The rule lives in `critical-inquiry.md`
   § How to ask and is restated at each decision point: the triage in
   `plan-product`, the gate line in all four skills and their commands, the Hunk
-  install offer and the slice hand-off in `plan-slices`, and the finding triage
-  in `commands/blind-review.md`. The mirror rule is in the three agent files —
+  install offer and the slice hand-off in `plan-slices`, the finding triage in
+  `commands/blind-review.md`, and the retirement offer with its
+  where-does-the-note-go question in `commands/retire.md`. The mirror rule is in the three agent files —
   subagents have no channel to the human, so they name both branches and return
   the question upward rather than asking or guessing. A new question added to
   any file in prose form, or a subagent told to ask, is a regression.
+- Scope of an artifact is owned by `artifact-conventions.md` § The delta, not
+  the system — the third sibling of the two brevity sections below, and the one
+  that governs *what surface* is covered rather than what goes in or how much.
+  It is restated in `commands/product.md`, `commands/architecture.md`, and
+  `commands/program.md`, in the draft step of all three planning skills, at the
+  screens checkpoint of `plan-product`, at the flow checkpoint of
+  `plan-architecture`, and in `ascii-wireframes.md` § Existing components, which
+  owns the concrete form (an existing component is one labelled box with a
+  citation). It exists because the brevity rules do not reach the drawings —
+  drawings are explicitly outside the two-screen budget, so over-architecting
+  migrates into them: wireframes of components the project already ships,
+  sequence diagrams of the system rather than the seam. Its argument has two
+  halves and both are load-bearing: a description of existing code goes stale
+  invisibly and is trusted anyway, and the next agent does not need it because
+  it reads the repo itself. The second half is what keeps the rule from being
+  softened into "summarise the codebase briefly" — an agent that cannot orient
+  itself in a repo is a gap in *that repo's* `CLAUDE.md`, which jig does not
+  fix.
 - Artifact brevity is two sibling sections of `artifact-conventions.md`.
   § Record decisions, not the work governs *what* goes in — outcomes rather than
   the investigation, one line per rejected alternative, and omit template
@@ -177,6 +197,22 @@ their own with a bare `references/<file>.md`. Do not mix the two forms.
   that an upstream amendment rides in the commit of whatever motivated it,
   stated here, in § Amending an upstream artifact, in `plan-architecture` and
   `plan-program`'s gate steps, and in `plan-slices` § 6 step 4.
+- Retirement is owned by `artifact-conventions.md` § Retiring the plan and
+  driven by `commands/retire.md`, with the hand-offs in `commands/blind-review.md`
+  (offer it once the triage leaves nothing outstanding) and `plan-slices`
+  § After the last slice and § Resuming cold. The end state of the loop is that
+  the feature directory does not exist. Three parts travel together and each
+  fails differently if dropped: the deletion is safe only because every phase
+  committed at its gate, so `git log -- <path>` still holds the plan — an edit
+  that weakens the commit rule makes this destructive; what is still live
+  (unmeasured outcome signal, deferral, accepted finding, named v2) is carried
+  into wherever the repo already keeps future work, found by looking and asked
+  for when nothing is found, never invented as a new directory; and the note is
+  compact, or absent when nothing survives, because a manufactured follow-up
+  note restarts the staleness it was meant to end. Note the interaction with
+  § What gets committed: accepted-with-reason findings live in
+  `03-program-design.md` § Decisions until retirement and have to leave the
+  directory with it, or they die with the file that held them.
 - Artifact line wrapping is stated in `artifact-conventions.md` § No hard
   wrapping and enforced by `hooks/unwrap-artifacts.py`, auto-loaded from
   `hooks/hooks.json` with no user settings involved. Two things in that script

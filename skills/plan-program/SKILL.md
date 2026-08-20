@@ -90,6 +90,15 @@ section the slice reviewer reads later to avoid re-litigating what you already
 settled, and a line does that as well as a page. Decisions is never omitted; it
 grows for the rest of the loop and other files cite it by name.
 
+Every drawing here is a diff, and that is not only a notation choice — it is
+`artifact-conventions.md` § The delta, not the system in the form this phase
+takes. The call stacks show where new frames hang off existing ones, with the
+existing path as context lines rather than an expanded tree. The file tree shows
+added and changed files; the directories they land in are one line of context
+each, not an inventory. Signatures are the new surface. A signature copied in
+unchanged, so the section reads complete, is a stale duplicate of a declaration
+the reader can already open.
+
 This document is nearly all drawings, which is how it should be: call stacks,
 a file tree, signatures, a list of test names. The prose between them is what
 `artifact-conventions.md` § Length and duplication budgets to two screens. The

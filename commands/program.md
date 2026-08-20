@@ -19,6 +19,11 @@ This document is mostly drawings; the prose between them stays inside the
 two-screen budget. Cite the contract in `02-architecture.md` rather than copying
 it, and keep research findings to one cited line each.
 
+Every drawing is a diff. New frames on existing call stacks, added and changed
+files, the new surface's signatures — existing code appears as context, never
+expanded or copied in to make a section look complete —
+`artifact-conventions.md` § The delta, not the system.
+
 Approved upstream means settled, not frozen. Where the signatures show that
 `02-architecture.md` is overbuilt or wrong, raise it at the checkpoint that
 showed it and amend that file rather than designing around it — see

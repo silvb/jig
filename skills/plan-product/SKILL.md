@@ -77,6 +77,10 @@ happy path.
 error — because they are only wrong relative to each other. Format in
 `references/ascii-wireframes.md`. Where the layout is a genuine fork, draw it
 both ways and let the human pick a picture rather than describe a correction.
+Draw what this feature adds: a component the project already ships is one
+labelled box with a citation, and a state that already exists and does not
+change is a line in the legend — see `references/ascii-wireframes.md`
+§ Existing components.
 
 **3. The acceptance criteria.** Given / When / Then, from the user's side.
 These become the Verify blocks in phase 4, so the question worth asking is
@@ -117,6 +121,13 @@ Write the settled drawings in, as drawn. Where a checkpoint turned on a real
 fork, record the alternative and why it lost in one line — in Out of scope if it
 was a scope cut, otherwise beside the section it belongs to. The artifact has to
 read the same to a cold agent whether it took one checkpoint or four.
+
+Write the delta and nothing else — see
+`${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md` § The delta, not the
+system. This document introduces what the user will be able to do that they
+cannot do today. It does not explain the product they already have: existing
+screens, flows, and components are cited where the new work touches them and
+otherwise left alone.
 
 Drop the sections this feature does not have. A feature with no visual surface
 has no Screens section as templated — see `references/ascii-wireframes.md`

@@ -286,8 +286,21 @@ Tell the human the feature is complete and offer the blind review
 (`blind-reviewer`). Do not run it unprompted — it is a deliberate step, not a
 formality.
 
+Once that review is triaged and anything it sent back to this loop is
+committed, the plan is retired: whatever is still live moves to wherever the
+repository keeps future work, and the feature directory is deleted in a commit
+of its own — `${CLAUDE_PLUGIN_ROOT}/references/artifact-conventions.md`
+§ Retiring the plan, driven by `/jig:retire`. That is the loop's end state, and
+it is worth naming here so the plan's disappearance reads as completion rather
+than loss.
+
 ## Resuming cold
 
 Given only a feature directory path: read `04-slices.md` for the status column,
 cross-check against `git log`, read `01`–`03` and the next slice file, and
 continue. Ask nothing that the directory already answers.
+
+A directory that does not exist has usually been retired rather than lost.
+Check `git log -- <path>` before writing anything: a `plan(<slug>): retire`
+commit means this feature finished, and new work on the same ground starts at
+`plan-product` rather than by resurrecting the old plan.

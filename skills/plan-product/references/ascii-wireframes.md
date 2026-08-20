@@ -25,6 +25,48 @@ behaviour in the legend where it can be edited without redrawing.
 **Content is representative, not lorem.** Real-looking labels expose length
 problems that placeholder text hides.
 
+## Existing components
+
+A wireframe settles an argument about something not yet decided. A component
+the project already ships is not that, so it is drawn as a single labelled box
+naming it and citing where it lives, and the fidelity goes into what is new
+around it:
+
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│  Drafts                                          [1] + New draft     │
+├──────────────────────────────────────────────────────────────────────┤
+│  ┌────────────────────────────────────────────────────────────────┐  │
+│  │  <DraftTable>  src/components/draft-table.tsx:1            [2] │  │
+│  └────────────────────────────────────────────────────────────────┘  │
+│  ┌────────────────────────────────────────────────────────────────┐  │
+│  │  Publish confirm — new                                         │  │
+│  │  Publishing sends this to 1,240 subscribers.                   │  │
+│  │                              [3] Cancel      [4] Publish now   │  │
+│  └────────────────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────────────────┘
+```
+
+**Legend**
+
+1. Unchanged.
+2. Existing table, unchanged except that rows now carry a Published badge.
+3. Dismisses; the draft stays a draft.
+4. The new action. Disabled while the confirm is in flight.
+
+Two things go wrong when the existing component is drawn out instead. The
+picture is a snapshot of something that shipped months ago and will drift from
+it silently, which is the general case in `artifact-conventions.md` § The delta,
+not the system. And redrawing invites redesigning: a shipped component rendered
+in a planning document reads as a proposal, and the next four turns go to a
+table nobody asked to change. Where the feature genuinely does change it, that
+change is the new part — draw the change, and say in the legend which component
+it edits.
+
+The same holds for a state that is already implemented. Draw the states this
+feature adds or alters; an existing empty state gets a line in the legend
+saying it is unchanged, not a box of its own.
+
 ## Example
 
 ### State: loaded

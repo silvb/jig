@@ -21,6 +21,13 @@ alternatives in one line rather than an argument. Drop template sections this
 feature does not have — no database means no Data model and no migration, not a
 heading over "N/A".
 
+Design the seams this feature adds or moves, not the system's architecture. The
+diagram carries the participants this feature touches; the data model carries
+the column that changes, not the tables around it. If a paragraph would still be
+true had this feature never been proposed, it is documenting the repository —
+cut it, and let the repository do that — `artifact-conventions.md` § The delta,
+not the system.
+
 Draw before you write. The flow diagram, the contract, the data model, and the
 failure-modes table are each settled in the conversation first — drawn in full,
 one elicitation each, stop — and only then assembled into `02-architecture.md`.

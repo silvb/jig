@@ -20,3 +20,8 @@ A prose list of ten findings gets a reply about two of them.
 
 Fold accepted-with-reason findings into `03-program-design.md` § Decisions so
 the next review does not re-litigate them, then delete `05-review.md`.
+
+Once the triage leaves nothing outstanding — no fix-now work still to commit —
+the feature is done and its plan has stopped being true. Say so and offer
+`/jig:retire`, which carries the accepted findings and any other live follow-up
+out of the directory before deleting it. Do not run it unprompted.
